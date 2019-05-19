@@ -4,7 +4,8 @@ class Map{
   ZoomButton zoomControl;
   DataFile data;
   
-  Map(DataFile source) {
+  Map(DataFile source,String bgFilename) {
+    regions = getBGData(bgFilename);
   }
   
   void draw() {
@@ -13,5 +14,10 @@ class Map{
   }
   Neighborhood[] regions() {
     return regions;
+  }
+  
+  private Neighborhood[] getBGData(String filename){
+    //@emory: if u start coding next part,make some fake neighborhoods here; ill fill in code to access file
+    return null;
   }
 }
