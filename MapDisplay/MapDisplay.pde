@@ -1,6 +1,10 @@
-void setup(){
-  
+void setup() {
 }
-void draw(){
+void draw() {
+}
+
+
+//STATIC METHODS
+static String[][] parseCSV(String filename, int... cols) {
   
 }

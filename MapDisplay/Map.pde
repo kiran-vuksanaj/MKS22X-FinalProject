@@ -18,6 +18,6 @@ class Map{
   
   private Neighborhood[] getBGData(String filename){
     //@emory: if u start coding next part,make some fake neighborhoods here; ill fill in code to access file
-    return null;
+    String[][] data = parseCSV(filename,1,5,7);
   }
 }
