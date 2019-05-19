@@ -17,7 +17,8 @@ class ZoomButton{
   }
   void draw(){
     fill(209);
-    rect(x1, y1, x2-x1, y2-y1);
+    rect(x1, y1, x2-x1, (y2-y1)/2+y1);
+    rect(x1, (y2-y1)/2+y1, x2-x1, (y2-y1)/2+y1);
     if(mouseX >= x1 && mouseX <= x2 && mouseY >= y1 && mouseY >= (y2-y1)/2 + y1 && mousePressed == true){
       zoomIn();
     }
