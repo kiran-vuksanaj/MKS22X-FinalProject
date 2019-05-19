@@ -23,7 +23,13 @@ class Map{
     Neighborhood[] out = new Neighborhood[data.length-1];
     for(int i=1;i<data.length;i++){//skip header line
       String poly = data[i][0].substring("MULTIPOLYGON (((".length(),data[i][0].length()-3);
-      if(i==1) println(poly);
+      String[] points = split(poly,',');
+      float[][] coords = new float[points.length][];
+      for(int j=0;j<points.length;j++){
+        points[j] = trim(points[j]);
+        coords[j] = float(split(points[j],' '));
+      }
+      out[i-1] = new Neighborhood(data[i][1],float(data[i][2]),coords);
     }
     return null;
   }
