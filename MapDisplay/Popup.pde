@@ -7,7 +7,7 @@ class Popup{
   }
   
   String getInfo(){
-    
+    return ""; //temporary
   }
   void draw(){
     

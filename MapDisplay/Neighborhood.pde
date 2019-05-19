@@ -14,12 +14,13 @@ class Neighborhood{
   }
   float getDensity(){
     
+    return -1; //temporary
   }
   private float[] getColorScale(float density){
-    
+    return null; //temporary
   }
   String getName(){
-    
+    return ""; //temporary
   }
   void addPoint(Point p){
     
