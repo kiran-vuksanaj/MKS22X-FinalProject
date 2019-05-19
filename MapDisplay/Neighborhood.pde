@@ -6,7 +6,9 @@ class Neighborhood{
   float r,g,b;
   
   Neighborhood(String name,float area,float[][] polyCorners){
-    
+    this.name = name;
+    this.area = area;
+    this.polyCorners = polyCorners;
   }
   
   float getArea(){
