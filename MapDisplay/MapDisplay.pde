@@ -11,17 +11,19 @@ static String[][] parseCSV(BufferedReader reader, int... cols) {
     String line = reader.readLine();
     while(line != null){//while not at last line
       lines.add(line);
+      //println(line);
       try{
         line = reader.readLine();
       }catch(IOException e){
         line = null;
       }
     }
-    String[][] out = new String[lines.size()][cols.length];
+    String[][] out = new String[lines.size()][];
     for(int i = 0;i<out.length;i++){
-      String[] split = splitIgnoringInQuotes(line);
+      out[i] = new String[cols.length];
+      String[] split = splitIgnoringInQuotes(lines.get(i));
       for(int j = 0;j<cols.length;j++){
-        split[cols[j]] = out[i][j];
+        out[i][j] = split[cols[j]];
       }
     }
     return out;
@@ -32,6 +34,7 @@ static String[][] parseCSV(BufferedReader reader, int... cols) {
 }
 static String[] splitIgnoringInQuotes(String line){
   String[] init = split(line,'"');
+  //printArray(init);
   int i = 1;
   String[] temps = new String[init.length/2];
   for(int c=0;i<init.length;i+=2){
@@ -41,9 +44,12 @@ static String[] splitIgnoringInQuotes(String line){
   line = join(init,'"');
   String[] out = split(line,',');
   int c = 0;
-  for(int j=0;i<out.length;j++){
-    if(out[i].contains("%%INQuotes%%")){
-      out[i].replace("%%INQuotes%%",temps[c++]);//careful! more than one?
+  for(int j=0;j<out.length;j++){
+    if(out[j].equals("\"%%INQuotes%%\"")){
+      println(out[j]);
+      println(temps[c]);
+      out[j] = temps[c++];
+      println(out[j]+"\n");
     }
   }
   return out;
