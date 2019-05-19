@@ -1,4 +1,6 @@
+Map m;
 void setup() {
+  m = new Map(null,"baseFiles/NTA.csv");
 }
 void draw() {
 }
@@ -46,10 +48,10 @@ static String[] splitIgnoringInQuotes(String line){
   int c = 0;
   for(int j=0;j<out.length;j++){
     if(out[j].equals("\"%%INQuotes%%\"")){
-      println(out[j]);
-      println(temps[c]);
+      //println(out[j]);
+      //println(temps[c]);
       out[j] = temps[c++];
-      println(out[j]+"\n");
+      //println(out[j]+"\n");
     }
   }
   return out;
