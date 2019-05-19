@@ -1,18 +1,17 @@
-Neighborhood[] regions;
-float upperLeftX,upperLeftY,coordWidth;
-ZoomButton zoomControl;
-DataFile data;
-
-Map(DataFile source){
+class Map{
+  Neighborhood[] regions;
+  float upperLeftX, upperLeftY, coordWidth;
+  ZoomButton zoomControl;
+  DataFile data;
   
-}
-
-void draw(){
+  Map(DataFile source) {
+  }
   
-}
-void setZoom(float upperLeftX,float upperLeftY,float coordWidth){
-  
-}
-Neighborhood[] regions(){
-  return regions;
+  void draw() {
+  }
+  void setZoom(float upperLeftX, float upperLeftY, float coordWidth) {
+  }
+  Neighborhood[] regions() {
+    return regions;
+  }
 }
