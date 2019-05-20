@@ -1,9 +1,14 @@
 Map m;
 void setup() {
   m = new Map(null,"baseFiles/NTA.csv");
-  //printArray(m.regions());
+  for(Neighborhood n : m.regions()){
+    //println(n.toStringCoords());
+  }
+  size(461, 570);
+  background(50, 140, 200);
 }
 void draw() {
+  m.draw();
 }
 
 
