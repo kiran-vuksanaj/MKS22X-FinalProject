@@ -4,7 +4,8 @@ void setup() {
   for(Neighborhood n : m.regions()){
     //println(n.toStringCoords());
   }
-  size(461, 570);
+  //size(461, 570);
+  size(1000, 800);
   background(50, 140, 200);
 }
 void draw() {
