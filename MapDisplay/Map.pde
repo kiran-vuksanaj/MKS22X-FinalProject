@@ -14,6 +14,9 @@ class Map{
   }
   
   void draw() {
+    for(Neighborhood n: regions){
+      n.draw();
+    }
   }
   void setZoom(float upperLeftX, float upperLeftY, float coordWidth) {
   }

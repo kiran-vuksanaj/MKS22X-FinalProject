@@ -38,10 +38,11 @@ class Neighborhood{
     return out;
   }
   void draw(){
+    fill(255);
     //creating a custom polygon for each neighborhood
     beginShape();
-    for(corner : polyCorners){
-      vertex(corner[0], corner[1]);
+    for(float[] corner : polyCorners){
+      vertex((corner[0]+74.2744)*1500, (corner[1]-40.4793)*1500);
     }
     endShape();
   }
