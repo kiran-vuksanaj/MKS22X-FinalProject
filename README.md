@@ -1,7 +1,8 @@
 # MKS22X-FinalProject
 displaying a map with datapoints!
 
-## Daily Logs
+
+##Daily Logs
 -----
 ### Sunday, May 19
 \tEmory: \
