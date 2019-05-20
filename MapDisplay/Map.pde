@@ -31,6 +31,6 @@ class Map{
       }
       out[i-1] = new Neighborhood(data[i][1],float(data[i][2]),coords);
     }
-    return null;
+    return out;
   }
 }
