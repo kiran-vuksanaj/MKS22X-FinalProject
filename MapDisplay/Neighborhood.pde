@@ -27,7 +27,9 @@ class Neighborhood{
   void addPoint(Point p){
     
   }
-  
+  String toString(){
+    return "{"+name+";"+area+";"+polyCorners.length+";"+polyCorners[int(random(polyCorners.length))][0]+"}";
+  }
   void draw(){
     
   }
