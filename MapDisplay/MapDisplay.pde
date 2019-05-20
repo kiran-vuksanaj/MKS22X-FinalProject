@@ -1,7 +1,9 @@
 Map m;
 void setup() {
   m = new Map(null,"baseFiles/NTA.csv");
-  //printArray(m.regions());
+  for(Neighborhood n : m.regions()){
+    //println(n.toStringCoords());
+  }
 }
 void draw() {
 }

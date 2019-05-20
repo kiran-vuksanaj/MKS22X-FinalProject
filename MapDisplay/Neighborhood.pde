@@ -30,7 +30,19 @@ class Neighborhood{
   String toString(){
     return "{"+name+";"+area+";"+polyCorners.length+";"+polyCorners[int(random(polyCorners.length))][0]+"}";
   }
+  String toStringCoords(){
+    String out = name+":\n";
+    for(float[] coord : polyCorners){
+      out+= "\t("+coord[0]+","+coord[1]+")\n";
+    }
+    return out;
+  }
   void draw(){
-    
+    //creating a custom polygon for each neighborhood
+    beginShape();
+    for(corner : polyCorners){
+      vertex(corner[0], corner[1]);
+    }
+    endShape();
   }
 }
