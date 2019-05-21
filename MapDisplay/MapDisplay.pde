@@ -2,7 +2,7 @@ Map m;
 void setup() {
   m = new Map(null,"baseFiles/NTA.csv");
   for(Neighborhood n : m.regions()){
-    //println(n.toStringCoords());
+    println(n.toStringCoords());
   }
   //size(461, 570);
   size(1000, 800);
@@ -72,14 +72,21 @@ static double[][][][] parseMultiPolygon(String str){
   String[] split = splitIgnore(str,",","(",")");
   double[][][][] out = new double[split.length][][][];
   for(int i=0;i<split.length;i++){
+    split[i] = trim(split[i]);
+    split[i] = split[i].substring(1,split[i].length()-1);
     String[] splitB = splitIgnore(split[i],",","(",")");
     out[i] = new double[splitB.length][][];
     for(int j=0;j<splitB.length;j++){
+      splitB[j] = trim(splitB[j]);
+      splitB[j] = splitB[j].substring(1,splitB[j].length()-1);
       String[] splitC = split(splitB[j],',');
       out[i][j] = new double[splitC.length][];
       for(int k=0;k<splitC.length;k++){
+        splitC[k] = trim(splitC[k]);
+        splitC[k] = splitC[k].substring(1,splitC[k].length()-1);
         out[i][j][k] = new double[2];
         String[] splitCoords = split(splitC[k],' ');
+        
         out[i][j][k][0] = Double.parseDouble(splitCoords[0]);
         out[i][j][k][1] = Double.parseDouble(splitCoords[1]);
       }
