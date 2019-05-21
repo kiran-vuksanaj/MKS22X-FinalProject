@@ -42,7 +42,7 @@ class Neighborhood{
     //creating a custom polygon for each neighborhood
     beginShape();
     for(float[] corner : polyCorners){
-      vertex((corner[0]+74.2744)*1500, (corner[1]-40.4793)*1500);
+      vertex(corner[0], corner[1]);
     }
     endShape();
   }
