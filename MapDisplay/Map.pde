@@ -39,7 +39,7 @@ class Map{
         String[] coordSplit = split(points[j],' ');
         coords[j][0] = Double.parseDouble(coordSplit[0]);
         coords[j][1] = Double.parseDouble(coordSplit[1]);
-      }
+        println("hm");
       }
       out[i-1] = new Neighborhood(data[i][1],float(data[i][2]),coords);
     }
