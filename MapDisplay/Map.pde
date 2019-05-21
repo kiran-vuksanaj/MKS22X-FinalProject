@@ -14,9 +14,17 @@ class Map{
   }
   
   void draw() {
+    pushMatrix();
+  
+    
+    translate(-upperLeftX*400, -upperLeftY*400);
+   
+    scale(400);
+    //rect(-74, 40, 30, 30);
     for(Neighborhood n: regions){
       n.draw();
     }
+    popMatrix();
   }
   void setZoom(float upperLeftX, float upperLeftY, float coordWidth) {
   }
