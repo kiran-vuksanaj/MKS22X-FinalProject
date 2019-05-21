@@ -30,7 +30,7 @@ class Map{
     String[][] data = parseCSV(reader,1,5,7);
     Neighborhood[] out = new Neighborhood[data.length-1];
     for(int i=1;i<data.length;i++){//skip header line
-      double[][][][] coords = parseMultipolygon(data[i][0]);
+      double[][][][] coords = parseMultiPolygon(data[i][0]);
       out[i-1] = new Neighborhood(data[i][1],float(data[i][2]),coords);
     }
     return out;
