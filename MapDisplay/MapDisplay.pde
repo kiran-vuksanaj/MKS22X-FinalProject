@@ -42,6 +42,7 @@ static String[][] parseCSV(BufferedReader reader, int... cols) {
   }
 }
 static String[] splitIgnore(String str,String split,String open,String close){
+  boolean identicalDelims = open.equals(close);
   int depth = 0;
   ArrayList<String> out = new ArrayList<String>();
   int prevIndex = 0;
@@ -58,8 +59,10 @@ static String[] splitIgnore(String str,String split,String open,String close){
         depth--;
         i += close.length() - 1;
       }
+      if(identicalDelims) depth %= 2;
     }
   }
+  out.add(str.substring(prevIndex,str.length()));
   String[] useless = new String[0];
   return out.toArray(useless);
 }
