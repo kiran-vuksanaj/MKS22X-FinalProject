@@ -1,11 +1,11 @@
 class Neighborhood{
   float area;
   String name;
-  double[][] polyCorners;
+  double[][][] polyCorners;
   Point[] internalPoints;
   float r,g,b;
   
-  Neighborhood(String name,float area,double[][] polyCorners){
+  Neighborhood(String name,float area,double[][][] polyCorners){
     this.name = name;
     this.area = area;
     this.polyCorners = polyCorners;
@@ -32,18 +32,23 @@ class Neighborhood{
   }
   String toStringCoords(){
     String out = name+":\n";
-    for(double[] coord : polyCorners){
-      out+= "\t("+coord[0]+","+coord[1]+")\n";
+    for(double[][] poly : polyCorners){
+      for(double[] coord : poly){
+        out+= "\t("+coord[0]+","+coord[1]+")\n";
+      }
+      out+="\n";
     }
     return out;
   }
   void draw(){
     fill(255);
     //creating a custom polygon for each neighborhood
-    beginShape();
-    for(double[] corner : polyCorners){
-      vertex((float)(corner[0]+74.2744)*1500, (float)(corner[1]-40.4793)*1500);
+    for(double[][] poly : polyCorners){
+      beginShape();
+      for(double[] corner : poly){
+        vertex((float)(corner[0]+74.2744)*1500, (float)(corner[1]-40.4793)*1500);
+      }
+      endShape();
     }
-    endShape();
   }
 }
