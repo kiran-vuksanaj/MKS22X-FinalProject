@@ -32,7 +32,7 @@ class Map{
     for(int i=1;i<data.length;i++){//skip header line
       String poly = data[i][0].substring("MULTIPOLYGON (((".length(),data[i][0].length()-3);
       String[] points = split(poly,',');
-      double[][] coords = new double[points.length][];
+      double[][][] coords = new double[][points.length][];
       for(int j=0;j<points.length;j++){
         coords[j] = new double[2];
         points[j] = trim(points[j]);
