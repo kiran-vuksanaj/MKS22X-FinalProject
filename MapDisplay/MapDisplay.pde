@@ -42,26 +42,26 @@ static String[][] parseCSV(BufferedReader reader, int... cols) {
   }
 }
 static String[] splitIgnore(String str,String split,String open,String close){
-  String[] out = split(str,open);
-  str = join(out,"%%DELIM%%");
-  out = split(str,close);
-  str = join(out,"%%DELIM%%");
-  out = split(str,"%%DELIM%%");
-  String[] temps = new String[out.length/2];
-  for(int i=0;i<temps.length;i++){
-    temps[i] = out[i*2+1];
-    out[i*2+1] = "%%IGNORE%%";
-  }
-  str = join(out,"");
-  out = split(str,split);
-  int c = 0;
-  for(int i=0;i<out.length;i++){
-    out[i] = trim(out[i]);
-    if(out[i].equals("%%IGNORE%%")){
-      out[i] = temps[c++];
+  int depth = 0;
+  ArrayList<String> out = new ArrayList<String>();
+  int prevIndex = 0;
+  for(int i=0;i<str.length();i++){
+    if(depth==0 && i+split.length() < str.length() && str.substring(i,i+split.length()).equals(split)){
+      out.add(str.substring(prevIndex,i));
+      prevIndex = i + split.length();
+      i += split.length() - 1;
+    }else{
+      if(i+open.length() < str.length() && str.substring(i,i+open.length()).equals(open)){
+        depth++;
+        i += open.length() - 1;
+      }else if(i+close.length() < str.length() && str.substring(i,i+close.length()).equals(close)){
+        depth--;
+        i += close.length() - 1;
+      }
     }
   }
-  return out;
+  String[] useless = new String[0];
+  return out.toArray(useless);
 }
 static double[][][][] parseMultiPolygon(String str){
   //remove outer layer guck
