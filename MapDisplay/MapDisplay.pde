@@ -8,7 +8,7 @@ void draw() {
 
 
 //STATIC METHODS
-static String[][] parseCSV(BufferedReader reader, int... cols) {
+static String[][] parseCSV(BufferedReader reader, int... cols) {// for use in background
   ArrayList<String> lines = new ArrayList<String>();
   try{
     String line = reader.readLine();
@@ -20,6 +20,11 @@ static String[][] parseCSV(BufferedReader reader, int... cols) {
       }catch(IOException e){
         line = null;
       }
+    }
+    if(cols.length==0){//if no input of cols, use all of them
+      int tableWidth = splitIgnoringInQuotes(lines.get(0)).length;
+      cols = new int[tableWidth];
+      for(int i=0;i<cols.length;i++) cols[i]=i;
     }
     String[][] out = new String[lines.size()][];
     for(int i = 0;i<out.length;i++){
