@@ -63,3 +63,24 @@ static String[] splitIgnore(String str,String split,String open,String close){
   }
   return out;
 }
+static double[][][][] parseMultiPolygon(String str){
+  //remove outer layer guck
+  str = str.substring("MULTIPOLYGON (".length(),str.length()-1);
+  String[] split = splitIgnore(str,",","(",")");
+  double[][][][] out = new double[split.length][][][];
+  for(int i=0;i<split.length;i++){
+    String[] splitB = splitIgnore(split[i],",","(",")");
+    out[i] = new double[splitB.length][][];
+    for(int j=0;j<splitB.length;j++){
+      String[] splitC = split(splitB[j],',');
+      out[i][j] = new double[splitC.length][];
+      for(int k=0;k<splitC.length;k++){
+        out[i][j][k] = new double[2];
+        String[] splitCoords = split(splitC[k],' ');
+        out[i][j][k][0] = Double.parseDouble(splitCoords[0]);
+        out[i][j][k][1] = Double.parseDouble(splitCoords[1]);
+      }
+    }
+  }
+  return out;
+}
