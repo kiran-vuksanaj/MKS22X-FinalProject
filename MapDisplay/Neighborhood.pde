@@ -50,7 +50,7 @@ class Neighborhood{
       for(double[][] innerPoly : poly){
         beginShape();
         for(double[] corner : innerPoly){
-          vertex((float)(corner[0]+74.2744)*1500, (float)(corner[1]-40.4793)*1500);
+          vertex((float)((corner[0]+74.2744)*1500), (float)((corner[1]-40.4793)*1500));
         }
         endShape();
       }
