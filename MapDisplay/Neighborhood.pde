@@ -34,7 +34,7 @@ class Neighborhood{
     String out = name+":\n";
     for(double[][][] poly : polyCorners){
       for(double[][] innerPoly : poly){
-        for(double[] coord : poly){
+        for(double[] coord : innerPoly){
           out+= "\t("+coord[0]+","+coord[1]+")\n";
         }
         out+="\n";
@@ -49,7 +49,7 @@ class Neighborhood{
     for(double[][][] poly : polyCorners){
       for(double[][] innerPoly : poly){
         beginShape();
-        for(double[] corner : poly){
+        for(double[] corner : innerPoly){
           vertex((float)(corner[0]+74.2744)*1500, (float)(corner[1]-40.4793)*1500);
         }
         endShape();
