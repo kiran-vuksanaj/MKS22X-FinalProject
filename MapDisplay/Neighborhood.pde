@@ -46,21 +46,16 @@ class Neighborhood{
   void draw(){
     //fill(0, 0, 255);
     //creating a custom polygon for each neighborhood
-<<<<<<< HEAD
-    beginShape();
-    for(float[] corner : polyCorners){
-      vertex(corner[0], corner[1]);
-      //vertex((corner[0]+74.2744)*1500, (corner[1]-40.4793)*1500);
-=======
+    strokeWeight(0.0005);
     for(double[][][] poly : polyCorners){
       for(double[][] innerPoly : poly){
         beginShape();
         for(double[] corner : innerPoly){
-          vertex((float)((corner[0]+74.2744)*1500), (float)((corner[1]-40.4793)*1500));
+          //vertex((float)((corner[0]+74.2744)*1500), (float)((corner[1]-40.4793)*1500));
+          vertex((float)(corner[0]), (float)(corner[1]));
         }
         endShape();
       }
->>>>>>> master
     }
   }
 }

@@ -1,13 +1,13 @@
 Map m;
 void setup() {
   m = new Map(null,"baseFiles/NTA.csv");
-  /*
+  
   for(Neighborhood n : m.regions()){
-    println(n.toStringCoords());
+    //println(n.toStringCoords());
   }
-  */
+  
   //size(461, 570);
-  size(798, 646);
+  size(900, 680);
   background(50, 140, 200);
 }
 void draw() {
@@ -71,24 +71,24 @@ static String[] splitIgnore(String str,String split,String open,String close){
 static double[][][][] parseMultiPolygon(String str){
   //remove outer layer guck
   str = str.substring("MULTIPOLYGON (".length()+1,str.length()-2);
-  println(endsOf(str));
+  //println(endsOf(str));
   String[] split = splitIgnore(str,",","(",")");
   double[][][][] out = new double[split.length][][][];
   for(int i=0;i<split.length;i++){
     split[i] = trim(split[i]);
     split[i] = split[i].substring(1,split[i].length()-1);
-    println("\t",endsOf(split[i]));
+    //println("\t",endsOf(split[i]));
     String[] splitB = splitIgnore(split[i],",","(",")");
     out[i] = new double[splitB.length][][];
     for(int j=0;j<splitB.length;j++){
       splitB[j] = trim(splitB[j]);
       splitB[j] = splitB[j].substring(1,splitB[j].length()-1);
-      println("\t\t",endsOf(splitB[j]));
+      //println("\t\t",endsOf(splitB[j]));
       String[] splitC = split(splitB[j],',');
       out[i][j] = new double[splitC.length][];
       for(int k=0;k<splitC.length;k++){
         splitC[k] = trim(splitC[k]);
-        println("\t\t\t",endsOf(splitC[k]));
+        //println("\t\t\t",endsOf(splitC[k]));
         out[i][j][k] = new double[2];
         String[] splitCoords = split(splitC[k],' ');
 
