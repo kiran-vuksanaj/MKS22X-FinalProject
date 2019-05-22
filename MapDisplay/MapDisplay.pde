@@ -20,24 +20,34 @@ static String[][] parseCSV(BufferedReader reader,String... headers){
   return null;
 }
 static String[][] parseCSV(BufferedReader reader, int... cols) {// for use in background
-  ArrayList<String> lines = new ArrayList<String>();
   try{
-    String line = reader.readLine();
-    while(line != null){//while not at last line
-      lines.add(line);
-      //println(line);
-      try{
-        line = reader.readLine();
-      }catch(IOException e){
-        line = null;
-      }
+    ArrayList<String> lines = getLines(reader);
+    return getTable(lines,cols);
+  }catch(IOException e){
+    e.printStackTrace();
+    throw new IllegalArgumentException();
+  }
+}
+private static ArrayList<String> getLines(BufferedReader reader)throws IOException{
+  ArrayList<String> out = new ArrayList<String>();
+  String line = reader.readLine();
+  while(line != null){//while not at last line
+    out.add(line);
+    try{
+      line = reader.readLine();
+    }catch(IOException e){
+      line = null;
     }
-    if(cols.length==0){//if no input of cols, use all of them
+  }
+  return out;
+}
+private static String[][] getTable(ArrayList<String> lines,int... cols){
+  if(cols.length==0){//if no input of cols, use all of them
       int tableWidth = splitIgnore(lines.get(0),",","(",")").length;
       cols = new int[tableWidth];
       for(int i=0;i<cols.length;i++) cols[i]=i;
     }
-    String[][] out = new String[lines.size()][];
+  String[][] out = new String[lines.size()][];
     for(int i = 0;i<out.length;i++){
       out[i] = new String[cols.length];
       String[] split = splitIgnore(lines.get(i),",","\"","\"");
@@ -46,10 +56,6 @@ static String[][] parseCSV(BufferedReader reader, int... cols) {// for use in ba
       }
     }
     return out;
-  }catch(IOException e){
-    e.printStackTrace();
-    throw new IllegalArgumentException();
-  }
 }
 static String[] splitIgnore(String str,String split,String open,String close){
   boolean identicalDelims = open.equals(close);
