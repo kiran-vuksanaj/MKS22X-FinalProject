@@ -16,6 +16,9 @@ void draw() {
 
 
 //STATIC METHODS
+static String[][] parseCSV(BufferedReader reader,String... headers){
+  return null;
+}
 static String[][] parseCSV(BufferedReader reader, int... cols) {// for use in background
   ArrayList<String> lines = new ArrayList<String>();
   try{
