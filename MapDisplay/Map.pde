@@ -14,7 +14,7 @@ class Map{
     coordWidth = -73.7045 - (-74.2744);
     scale = 1400;
     
-    zoomControl = new ZoomButton(this, 50, 150, 550, 650);
+    zoomControl = new ZoomButton(this, 50, 100, 550, 650);
   }
   
   void draw() {

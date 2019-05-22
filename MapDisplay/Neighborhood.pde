@@ -46,6 +46,7 @@ class Neighborhood{
   void draw(){
     //fill(0, 0, 255);
     //creating a custom polygon for each neighborhood
+    fill(255);
     strokeWeight(0.0005);
     for(double[][][] poly : polyCorners){
       for(double[][] innerPoly : poly){
