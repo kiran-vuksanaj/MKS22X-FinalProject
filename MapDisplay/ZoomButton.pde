@@ -9,11 +9,13 @@ class ZoomButton{
     y1 = Y1;
     y2 = Y2;
     f = createFont("Arial",16,true);  // Loading font
-    
+    exteriorMap = parent;
   }
   void zoomOut(){
-   
-    
+    int currentScale = exteriorMap.getZoom();
+    if(currentScale > 1000){
+      exteriorMap.setZoom( currentScale - 100);
+    }  
   }
   void zoomIn(){
     

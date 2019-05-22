@@ -20,16 +20,23 @@ class Map{
     pushMatrix();
   
     translate(-upperLeftX*scale, -upperLeftY*scale);
-    
     scale(scale);
-    
   
-    //rect(-74, 40, 30, 30);
     for(Neighborhood n: regions){
       n.draw();
     }
+   
     popMatrix();
   }
+  
+  void setScale(int newScale){
+    scale = newScale;
+  }
+  
+  int getScale(){
+    return scale;
+  }
+  
   void setZoom(float upperLeftX, float upperLeftY, float coordWidth) {
   }
   Neighborhood[] regions() {
