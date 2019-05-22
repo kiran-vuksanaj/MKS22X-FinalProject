@@ -9,6 +9,9 @@ class Neighborhood{
     this.name = name;
     this.area = area;
     this.polyCorners = polyCorners;
+    r = random(256);
+    g = random(256);
+    b = random(256);
   }
   
   float getArea(){
@@ -44,7 +47,7 @@ class Neighborhood{
     return out;
   }
   void draw(){
-    //fill(0, 0, 255);
+    fill(r, g, b);
     //creating a custom polygon for each neighborhood
     strokeWeight(0.0005);
     for(double[][][] poly : polyCorners){
