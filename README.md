@@ -12,5 +12,5 @@ displaying a map with datapoints!
 - Kiran: Examined file formatting of NYC Open Data's CSV files in order to setup CSV parsing
 
 ### Tuesday, May 22
-- Emory: 
+- Emory: Scaled the coordinates to the processing coordinate systems through processing transformations; realized my previous error: the lines of the neighborhood outlines get scaled as well so I was getting a big blob of blackness; changed the size of the lines and now working.
 - Kiran: Realized a problem in earlier interpretation of base file formatting; rewrote majority of parsing code to correct errors, mirror the complete structure of multipolygons, and updated storage to use doubles rather than floats.
