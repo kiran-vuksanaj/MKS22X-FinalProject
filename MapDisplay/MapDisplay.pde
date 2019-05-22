@@ -130,7 +130,7 @@ static double[][][][] parseMultiPolygon(String str){
 }
 
 static double[] parsePoint(String point){
-  point = point.substring("POINT (".length()+1,point.length()-1);
+  point = point.substring("POINT (".length(),point.length()-1);
   String[] coords = split(point,' ');
   double[] out = {Double.parseDouble(coords[0]),
                   Double.parseDouble(coords[1])
