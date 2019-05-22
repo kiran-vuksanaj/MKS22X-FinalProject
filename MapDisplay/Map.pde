@@ -8,6 +8,8 @@ class Map{
   Map(DataFile source,String bgFilename) {
     regions = getBGData(bgFilename);
     
+    data = source;
+    
     //setting corners to NYC corners (ish)
     upperLeftX = -74.2744;
     upperLeftY = 40.4793; //currently bottom left because its going to be flipped
