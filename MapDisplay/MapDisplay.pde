@@ -1,6 +1,7 @@
 Map m;
 void setup() {
-  m = new Map(null,"baseFiles/NTA.csv");
+  DataFile d = new CSVFile("inputFiles/Subway_Entrances_Sample.csv");
+  m = new Map(d,"baseFiles/NTA.csv");
   
   for(Neighborhood n : m.regions()){
     //println(n.toStringCoords());
