@@ -3,6 +3,7 @@ class Map{
   float upperLeftX, upperLeftY, coordWidth;
   ZoomButton zoomControl;
   DataFile data;
+  int scale;
   
   Map(DataFile source,String bgFilename) {
     regions = getBGData(bgFilename);
@@ -11,12 +12,23 @@ class Map{
     upperLeftX = -74.2744;
     upperLeftY = 40.4793; //currently bottom left because its going to be flipped
     coordWidth = -73.7045 - (-74.2744);
+    scale = 1400;
   }
   
   void draw() {
+  
+    pushMatrix();
+  
+    translate(-upperLeftX*scale, -upperLeftY*scale);
+    
+    scale(scale);
+    
+  
+    //rect(-74, 40, 30, 30);
     for(Neighborhood n: regions){
       n.draw();
     }
+    popMatrix();
   }
   void setZoom(float upperLeftX, float upperLeftY, float coordWidth) {
   }

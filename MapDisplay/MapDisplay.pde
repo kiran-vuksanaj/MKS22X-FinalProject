@@ -1,13 +1,13 @@
 Map m;
 void setup() {
   m = new Map(null,"baseFiles/NTA.csv");
-  /*
+  
   for(Neighborhood n : m.regions()){
-    println(n.toStringCoords());
+    //println(n.toStringCoords());
   }
-  */
+  
   //size(461, 570);
-  size(1000, 800);
+  size(900, 680);
   background(50, 140, 200);
 }
 void draw() {
@@ -91,7 +91,7 @@ static double[][][][] parseMultiPolygon(String str){
         //println("\t\t\t",endsOf(splitC[k]));
         out[i][j][k] = new double[2];
         String[] splitCoords = split(splitC[k],' ');
-        
+
         out[i][j][k][0] = Double.parseDouble(splitCoords[0]);
         out[i][j][k][1] = Double.parseDouble(splitCoords[1]);
       }
