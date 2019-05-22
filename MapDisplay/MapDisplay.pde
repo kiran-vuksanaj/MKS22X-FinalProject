@@ -17,7 +17,15 @@ void draw() {
 
 //STATIC METHODS
 static String[][] parseCSV(BufferedReader reader,String... headers){
-  return null;
+  try{
+    ArrayList<String> lines = getLines(reader);
+    //match headers to cols
+    
+    return getTable(lines);
+  }catch(IOException e){
+    e.printStackTrace();
+    throw new IllegalArgumentException();
+  }
 }
 static String[][] parseCSV(BufferedReader reader, int... cols) {// for use in background
   try{
