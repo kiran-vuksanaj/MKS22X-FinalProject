@@ -12,21 +12,23 @@ class ZoomButton{
     exteriorMap = parent;
   }
   void zoomOut(){
-    int currentScale = exteriorMap.getZoom();
+    int currentScale = exteriorMap.getScale();
     if(currentScale > 1000){
-      exteriorMap.setZoom( currentScale - 100);
+      exteriorMap.setScale( currentScale - 100);
     }  
   }
   void zoomIn(){
-    
-    
+    int currentScale = exteriorMap.getScale();
+    if(currentScale < 2000){
+      exteriorMap.setScale( currentScale + 100);
+    }  
   }
   void draw(){
     fill(209);
     rect(x1, y1, x2-x1, (y2-y1)/2+y1);
     rect(x1, (y2-y1)/2+y1, x2-x1, (y2-y1)/2+y1);
     
-    fill(0, 0, 180);
+    fill(0);
     textFont(f, 50);
     text("+", x1, y1); //will need to be changed but fine for now
     text("-", x1, (y2-y1)/2+y1);

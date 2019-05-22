@@ -13,6 +13,8 @@ class Map{
     upperLeftY = 40.4793; //currently bottom left because its going to be flipped
     coordWidth = -73.7045 - (-74.2744);
     scale = 1400;
+    
+    zoomControl = new ZoomButton(this, 50, 150, 550, 650);
   }
   
   void draw() {
@@ -27,6 +29,8 @@ class Map{
     }
    
     popMatrix();
+    
+    zoomControl.draw();
   }
   
   void setScale(int newScale){
@@ -36,9 +40,7 @@ class Map{
   int getScale(){
     return scale;
   }
-  
-  void setZoom(float upperLeftX, float upperLeftY, float coordWidth) {
-  }
+ 
   Neighborhood[] regions() {
     return regions;
   }
