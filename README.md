@@ -11,6 +11,10 @@ displaying a map with datapoints!
 - Emory: Added a draw method for the neighborhoods that creates a polygon with all corners; set instance variables for the edges of the map; created the actual map; shows all of nyc flipped
 - Kiran: Examined file formatting of NYC Open Data's CSV files in order to setup CSV parsing
 
-### Tuesday, May 22
+### Tuesday, May 21
 - Emory: Scaled the coordinates to the processing coordinate systems through processing transformations; realized my previous error: the lines of the neighborhood outlines get scaled as well so I was getting a big blob of blackness; changed the size of the lines and now working.
 - Kiran: Realized a problem in earlier interpretation of base file formatting; rewrote majority of parsing code to correct errors, mirror the complete structure of multipolygons, and updated storage to use doubles rather than floats.
+
+### Wednesday, May 22
+- Emory: Finished zoom buttons; also made a button that will reset the zoom of the map;
+- Kiran:
