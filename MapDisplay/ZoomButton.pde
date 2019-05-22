@@ -14,7 +14,7 @@ class ZoomButton{
   }
   void zoomOut(){
     int currentScale = exteriorMap.getScale();
-    if(currentScale > 00){
+    if(currentScale > 500){
       exteriorMap.setScale( currentScale - 100);
     }  
   }
@@ -24,26 +24,22 @@ class ZoomButton{
       exteriorMap.setScale( currentScale + 100);
     }  
   }
+  void resetZoom(){
+    exteriorMap.setScale(1400);
+  }
   void draw(){
     fill(209);
     rect(x1, y1, x2-x1, y2-y1);
     line(x1, midY, x2, midY);
+    rect(x2, midY, x2-x1, (y2-y1)/2);
     
     fill(0);
     textFont(f, 50);
-    text("+", x1+5, y1 + 40); //will need to be changed but fine for now
-    text("-", x1 + 15, midY + 40);
+    text("+", x1+10, y1 + 40); //will need to be changed but fine for now
+    text("-", x1 + 20, midY + 40);
+    ellipse((x2-x1)/2+x2, (y2-midY)/2+midY, 20, 20);
     
-    //print(exteriorMap.scale);
-    
-    /*if(mouseX > x1 && mouseX < x2 && mouseY > midY && mouseY < y2 && mousePressed == true){
-      zoomOut();
-    }
-    
-    if(mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseX < midY && mousePressed == true){
-      zoomIn();
-    }*/
-    
+   
     if(mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2 && mousePressed == true){
       if(mouseY < midY){
         zoomIn();
@@ -51,6 +47,9 @@ class ZoomButton{
       if(mouseY > midY){
         zoomOut();
       }
+    }
+    if(mouseX > x2 && mouseX < ((x2-x1)+x2) && mouseY > midY && mouseY < y2 && mousePressed == true){
+      resetZoom();
     }
   }
 }
