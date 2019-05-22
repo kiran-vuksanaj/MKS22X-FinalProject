@@ -20,7 +20,13 @@ static String[][] parseCSV(BufferedReader reader,String... headers){
   try{
     ArrayList<String> lines = getLines(reader);
     //match headers to cols
-    
+    //(this is a super ugly thing imma try later to make it beter)
+    java.util.List<String> headerRow = java.util.Arrays.asList(splitIgnore(lines.get(0),",","(",")"));
+    int[] cols = new int[headers.length];
+    for(int i=0;i<headers.length;i++){
+      cols[i] = headerRow.indexOf(headers[i]);
+      if(cols[i]==-1) throw new IllegalArgumentException();
+    }
     return getTable(lines);
   }catch(IOException e){
     e.printStackTrace();
