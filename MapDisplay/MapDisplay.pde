@@ -28,7 +28,7 @@ static String[][] parseCSV(BufferedReader reader,String... headers){
       cols[i] = headerRow.indexOf(headers[i]);
       if(cols[i]==-1) throw new IllegalArgumentException();
     }
-    return getTable(lines);
+    return getTable(lines,cols);
   }catch(IOException e){
     e.printStackTrace();
     throw new IllegalArgumentException();
