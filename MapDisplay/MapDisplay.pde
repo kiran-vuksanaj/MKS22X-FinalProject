@@ -128,6 +128,16 @@ static double[][][][] parseMultiPolygon(String str){
   }
   return out;
 }
+
+static double[] parsePoint(String point){
+  point = point.substring("POINT (".length()+1,point.length()-1);
+  String[] coords = split(point,' ');
+  double[] out = {Double.parseDouble(coords[0]),
+                  Double.parseDouble(coords[1])
+                  };
+  return out;
+}
+
 static String endsOf(String str){
   return str.substring(0,10)+" ... "+str.substring(str.length()-10);
 }
