@@ -11,7 +11,9 @@ void setup() {
   background(50, 140, 200);
 }
 void draw() {
+  background(50, 140, 200);
   m.draw();
+  
 }
 
 
