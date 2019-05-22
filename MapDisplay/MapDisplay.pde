@@ -30,7 +30,7 @@ static String[][] parseCSV(BufferedReader reader, int... cols) {// for use in ba
       }
     }
     if(cols.length==0){//if no input of cols, use all of them
-      int tableWidth = splitIgnoringInQuotes(lines.get(0)).length;
+      int tableWidth = splitIgnore(lines.get(0),",","(",")").length;
       cols = new int[tableWidth];
       for(int i=0;i<cols.length;i++) cols[i]=i;
     }
