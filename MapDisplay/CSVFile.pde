@@ -4,9 +4,15 @@ class CSVFile extends DataFile{
  CSVFile(String filename){
    BufferedReader r = createReader(filename);
    String[][] data = parseCSV(r,"the_geom");
-   for(int i=0;i<data[0].length;i++){
-     println(data[0][i]);
+   /*
+   for(String[] row : data){
+     printArray(row);
+     println();
    }
+   for(int i=0;i<data.length;i++){
+     println(data[i][3]);
+   }
+   */
  }
  Point[] points(){
    return points;
