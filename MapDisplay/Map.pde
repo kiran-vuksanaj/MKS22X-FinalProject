@@ -30,6 +30,9 @@ class Map{
     for(Neighborhood n: regions){
       n.draw();
     }
+    for(Point p : data.points()){
+      p.draw();
+    }
     popMatrix();
   }
   void setZoom(float upperLeftX, float upperLeftY, float coordWidth) {
