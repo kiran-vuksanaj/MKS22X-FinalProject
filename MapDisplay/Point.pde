@@ -1,19 +1,20 @@
 class Point{
-  float latitude,longitude;
+  double latitude,longitude;
   Popup extraData;
-  Map exteriorMap;
   Neighborhood parentNeighborhood;
   boolean showPopup;
   
-  Point(float latitude,float longitude,String otherData,Map parent){
-    
+  Point(double[] coords,String otherData){
+    longitude = coords[0];
+    latitude = coords[1];
   }
   
   void draw(){
-    
+    fill(0,0,0);
+    ellipse((float)(longitude),(float)(latitude),0.004,0.004);
   }
   
-  void assigntoRegion(){
+  void assigntoRegion(Neighborhood[] regions){
     
   }
 }

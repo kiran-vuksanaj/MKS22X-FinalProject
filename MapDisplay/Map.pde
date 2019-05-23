@@ -4,47 +4,51 @@ class Map{
   ZoomButton zoomControl;
   DataFile data;
   int scale;
-  
+
   Map(DataFile source,String bgFilename) {
     regions = getBGData(bgFilename);
-    
+
+    data = source;
+
     //setting corners to NYC corners (ish)
     upperLeftX = -74.2744;
     upperLeftY = 40.4793; //currently bottom left because its going to be flipped
     coordWidth = -73.7045 - (-74.2744);
     scale = 1400;
-    
+
     zoomControl = new ZoomButton(this, 50, 100, 550, 650);
   }
-  
+
   void draw() {
-  
+
     pushMatrix();
   
     translate(-upperLeftX*scale, -upperLeftY*scale);
     scale(scale);
-  
+
     for(Neighborhood n: regions){
       n.draw();
     }
-   
+    for(Point p : data.points()){
+      p.draw();
+    }
     popMatrix();
-    
+
     zoomControl.draw();
   }
-  
+
   void setScale(int newScale){
     scale = newScale;
   }
-  
+
   int getScale(){
     return scale;
   }
- 
+
   Neighborhood[] regions() {
     return regions;
   }
-  
+
   private Neighborhood[] getBGData(String filename){
     //@emory: if u start coding next part,make some fake neighborhoods here; ill fill in code to access file
     BufferedReader reader = createReader(filename);

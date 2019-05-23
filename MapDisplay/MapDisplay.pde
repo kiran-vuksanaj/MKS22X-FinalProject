@@ -1,6 +1,7 @@
 Map m;
 void setup() {
-  m = new Map(null,"baseFiles/NTA.csv");
+  DataFile d = new CSVFile("inputFiles/Subway_Entrances_Sample.csv");
+  m = new Map(d,"baseFiles/NTA.csv");
   
   for(Neighborhood n : m.regions()){
     //println(n.toStringCoords());
@@ -18,20 +19,52 @@ void draw() {
 
 
 //STATIC METHODS
-static String[][] parseCSV(BufferedReader reader, int... cols) {
-  ArrayList<String> lines = new ArrayList<String>();
+static String[][] parseCSV(BufferedReader reader,String... headers){
   try{
-    String line = reader.readLine();
-    while(line != null){//while not at last line
-      lines.add(line);
-      //println(line);
-      try{
-        line = reader.readLine();
-      }catch(IOException e){
-        line = null;
-      }
+    ArrayList<String> lines = getLines(reader);
+    //match headers to cols
+    //(this is a super ugly thing imma try later to make it beter)
+    java.util.List<String> headerRow = java.util.Arrays.asList(splitIgnore(lines.get(0),",","(",")"));
+    int[] cols = new int[headers.length];
+    for(int i=0;i<headers.length;i++){
+      cols[i] = headerRow.indexOf(headers[i]);
+      if(cols[i]==-1) throw new IllegalArgumentException();
     }
-    String[][] out = new String[lines.size()][];
+    return getTable(lines,cols);
+  }catch(IOException e){
+    e.printStackTrace();
+    throw new IllegalArgumentException();
+  }
+}
+static String[][] parseCSV(BufferedReader reader, int... cols) {// for use in background
+  try{
+    ArrayList<String> lines = getLines(reader);
+    return getTable(lines,cols);
+  }catch(IOException e){
+    e.printStackTrace();
+    throw new IllegalArgumentException();
+  }
+}
+private static ArrayList<String> getLines(BufferedReader reader)throws IOException{
+  ArrayList<String> out = new ArrayList<String>();
+  String line = reader.readLine();
+  while(line != null){//while not at last line
+    out.add(line);
+    try{
+      line = reader.readLine();
+    }catch(IOException e){
+      line = null;
+    }
+  }
+  return out;
+}
+private static String[][] getTable(ArrayList<String> lines,int... cols){
+  if(cols.length==0){//if no input of cols, use all of them
+      int tableWidth = splitIgnore(lines.get(0),",","(",")").length;
+      cols = new int[tableWidth];
+      for(int i=0;i<cols.length;i++) cols[i]=i;
+    }
+  String[][] out = new String[lines.size()][];
     for(int i = 0;i<out.length;i++){
       out[i] = new String[cols.length];
       String[] split = splitIgnore(lines.get(i),",","\"","\"");
@@ -40,10 +73,6 @@ static String[][] parseCSV(BufferedReader reader, int... cols) {
       }
     }
     return out;
-  }catch(IOException e){
-    e.printStackTrace();
-    throw new IllegalArgumentException();
-  }
 }
 static String[] splitIgnore(String str,String split,String open,String close){
   boolean identicalDelims = open.equals(close);
@@ -101,6 +130,16 @@ static double[][][][] parseMultiPolygon(String str){
   }
   return out;
 }
+
+static double[] parsePoint(String point){
+  point = point.substring("POINT (".length(),point.length()-1);
+  String[] coords = split(point,' ');
+  double[] out = {Double.parseDouble(coords[0]),
+                  Double.parseDouble(coords[1])
+                  };
+  return out;
+}
+
 static String endsOf(String str){
   return str.substring(0,10)+" ... "+str.substring(str.length()-10);
 }

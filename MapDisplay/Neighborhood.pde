@@ -9,9 +9,9 @@ class Neighborhood{
     this.name = name;
     this.area = area;
     this.polyCorners = polyCorners;
-    r = random(256);
-    g = random(256);
-    b = random(256);
+    r = 255;
+    g = 255;
+    b = 255;
   }
   
   float getArea(){
