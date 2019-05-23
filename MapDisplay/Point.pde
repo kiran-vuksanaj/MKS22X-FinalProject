@@ -11,7 +11,7 @@ class Point{
   
   void draw(int scale){
     fill(0,255,207);
-    ellipse((float)(longitude),(float)(latitude),5.0/scale,5.0/scale);
+    ellipse((float)(longitude),(float)(latitude),10.0/scale,10.0/scale);
   }
   
   void assigntoRegion(Neighborhood[] regions){
