@@ -30,7 +30,7 @@ class Map{
       n.draw();
     }
     for(Point p : data.points()){
-      p.draw();
+      p.draw(scale);
     }
     popMatrix();
 

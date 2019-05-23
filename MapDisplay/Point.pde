@@ -9,9 +9,9 @@ class Point{
     latitude = coords[1];
   }
   
-  void draw(){
-    fill(0,0,0);
-    ellipse((float)(longitude),(float)(latitude),0.004,0.004);
+  void draw(int scale){
+    fill(0,255,207);
+    ellipse((float)(longitude),(float)(latitude),5.0/scale,5.0/scale);
   }
   
   void assigntoRegion(Neighborhood[] regions){
