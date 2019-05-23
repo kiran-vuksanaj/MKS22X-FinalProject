@@ -11,9 +11,8 @@ class Map{
     data = source;
 
     //setting corners to NYC corners (ish)
-    upperLeftX = -74.2744;
-    upperLeftY = 40.4793; //currently bottom left because its going to be flipped
-    coordWidth = -73.7045 - (-74.2744);
+    upperLeftX = -74.2834;
+    upperLeftY = 40.9408; //currently bottom left because its going to be flipped
     scale = 1400;
 
     zoomControl = new ZoomButton(this, 50, 100, 550, 650);
@@ -22,9 +21,10 @@ class Map{
   void draw() {
 
     pushMatrix();
-  
-    translate(-upperLeftX*scale, -upperLeftY*scale);
-    scale(scale);
+    
+    scale(scale,-scale);
+    translate(-upperLeftX, -upperLeftY);
+    fill(0,0,0);
 
     for(Neighborhood n: regions){
       n.draw();
