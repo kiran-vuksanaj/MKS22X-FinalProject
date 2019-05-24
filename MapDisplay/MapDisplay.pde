@@ -1,6 +1,6 @@
 Map m;
 void setup() {
-  DataFile d = new CSVFile("inputFiles/Subway_Entrances_Sample.csv");
+  DataFile d = new CSVFile("inputFiles/PublicWifi.csv");
   m = new Map(d,"baseFiles/NTA.csv");
   
   for(Neighborhood n : m.regions()){
@@ -142,4 +142,16 @@ static double[] parsePoint(String point){
 
 static String endsOf(String str){
   return str.substring(0,10)+" ... "+str.substring(str.length()-10);
+}
+
+
+//HELPER METHODS: is point contained within a polygon
+static boolean containedInPoly(double[][] poly,double x,double y){
+  return false;
+}
+static int horizontalRayCrossings(double[][] poly, double x, double y){
+  return -1;
+}
+static boolean rayCrossesSegment(double x1,double y1,double x2,double y2,double xP,double yP){
+  return false;
 }

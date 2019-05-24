@@ -18,4 +18,7 @@ class Point{
   void assigntoRegion(Neighborhood[] regions){
     
   }
+  private boolean containedInNeighborhood(Neighborhood n){
+    return false;
+  }
 }
