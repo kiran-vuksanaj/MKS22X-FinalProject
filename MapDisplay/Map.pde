@@ -58,7 +58,7 @@ class Map {
   }
 
   void drag() {
-    if (mousePressed && mouseX > 150 || mouseY < 550) {
+    if (mousePressed && (mouseX > 150 || mouseY < 550)) {
       float origX = mouseX;
       float origY = mouseY;
       
@@ -70,8 +70,8 @@ class Map {
         newY = mouseY;
       }
       
-      upperLeftX += newX-origX;
-      upperLeftY += newY - origY;
+      upperLeftX += (newX-origX)/scale;
+      upperLeftY += (newY-origY)/scale;
     }
   }
 
