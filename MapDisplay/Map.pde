@@ -4,7 +4,7 @@ class Map {
   ZoomButton zoomControl;
   DataFile data;
   int scale;
-
+ 
   Map(DataFile source, String bgFilename) {
     regions = getBGData(bgFilename);
 
@@ -15,11 +15,13 @@ class Map {
     upperLeftY = 40.9408; //currently bottom left because its going to be flipped
     scale = 1400;
 
+
     zoomControl = new ZoomButton(this, 50, 100, 550, 650);
   }
 
   void draw() {
-
+    drag();
+    
     pushMatrix();
 
     scale(scale, -scale);
@@ -56,6 +58,21 @@ class Map {
   }
 
   void drag() {
+    if (mousePressed && mouseX > 150 || mouseY < 550) {
+      float origX = mouseX;
+      float origY = mouseY;
+      
+      float newX = 0.0;
+      float newY = 0.0;
+      
+      while (mousePressed) {
+        newX = mouseX;
+        newY = mouseY;
+      }
+      
+      upperLeftX += newX-origX;
+      upperLeftY += newY - origY;
+    }
   }
 
   private Neighborhood[] getBGData(String filename) {
