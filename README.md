@@ -25,4 +25,4 @@ displaying a map with datapoints!
 
 
 ### Friday, May 24
-- Emory: Trying to make the map move by dragging; running into some trouble where the map just disappears when I drag
+- Emory: Trying to make the map move by dragging; running into some trouble where the map just disappears when I drag; experimented with moving a box around in a separate file
