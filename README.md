@@ -17,4 +17,12 @@ displaying a map with datapoints!
 
 ### Wednesday, May 22
 - Emory: Finished zoom buttons; also made a button that will reset the zoom of the map;
-- Kiran:
+- Kiran: Fleshed out CSVFile class to parse data and extract the proper information for datapoints
+
+### Thursday, May 23
+- Emory: AP US History Exam
+- Kiran: Wrote code to display points and fiddled with sizes and scales to make them look good; flipped the map right side up
+
+
+### Friday, May 24
+- Emory: Trying to make the map move by dragging; running into some trouble where the map just disappears when I drag; experimented with moving a box around in a separate file

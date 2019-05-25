@@ -25,7 +25,7 @@ class ZoomButton{
     }  
   }
   void resetZoom(){
-    exteriorMap.setScale(1400);
+    exteriorMap.reset();
   }
   void draw(){
     fill(209);
