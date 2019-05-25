@@ -5,7 +5,7 @@ class Map {
   DataFile data;
   int scale;
   boolean locked;
- 
+
   Map(DataFile source, String bgFilename) {
     regions = getBGData(bgFilename);
 
@@ -21,8 +21,7 @@ class Map {
   }
 
   void draw() {
-
-    
+  
     pushMatrix();
 
     scale(scale, -scale);
@@ -38,6 +37,11 @@ class Map {
     popMatrix();
 
     zoomControl.draw();
+    
+    if (mousePressed && (mouseX > 150 || mouseY < 550)) {
+      m.drag();
+    }
+
   }
 
   void setScale(int newScale) {
@@ -57,41 +61,59 @@ class Map {
     upperLeftX = -74.2834;
     upperLeftY = 40.9408;
   }
-  
-  /*void mousePressed(){
-    if(mouseX > 150 || mouseY < 550){
-      print("locked ");
-      locked = true;
-    }
-  }
-  
-  void mouseDragged(){
-    if(locked){
-       upperLeftX += (mouseX - pmouseX)/scale;
-       upperLeftY += (mouseY - pmouseY)/scale;
+
+  void drag() {
+    if (mouseX > 150 || mouseY < 550) {
+      float oldx = mouseX;
+      float oldy = mouseY;
+
+      while (mousePressed) {
+        print("loop ");
+      }
+      
+
+      float newx = mouseX;
+      float newy = mouseY;
+
+      upperLeftX += (newx - oldx)/scale;
+      upperLeftY += (newy- oldy)/-scale;
     }
   }
 
+  /*void mousePressed(){
+   if(mouseX > 150 || mouseY < 550){
+   print("locked ");
+   locked = true;
+   }
+   }
+   
+   void mouseDragged(){
+   if(locked){
+   upperLeftX += (mouseX - pmouseX)/scale;
+   upperLeftY += (mouseY - pmouseY)/scale;
+   }
+   }
+   
   /*void drag() {
-    if (mousePressed && (mouseX > 150 || mouseY < 550)) {
-      print("1");
-      float origX = mouseX;
-      float origY = mouseY;
-      
-      float newX = 0.0;
-      float newY = 0.0;
-      
-      while (mousePressed) {
-        newX = mouseX;
-        newY = mouseY;
-        print(newX + ", " + newY);
-      }
-      
-      upperLeftX += (newX-origX)/scale;
-      upperLeftY += (newY-origY)/scale;
-      print(upperLeftX + ", " + upperLeftY);
-    }
-  }*/
+   if (mousePressed && (mouseX > 150 || mouseY < 550)) {
+   print("1");
+   float origX = mouseX;
+   float origY = mouseY;
+   
+   float newX = 0.0;
+   float newY = 0.0;
+   
+   while (mousePressed) {
+   newX = mouseX;
+   newY = mouseY;
+   print(newX + ", " + newY);
+   }
+   
+   upperLeftX += (newX-origX)/scale;
+   upperLeftY += (newY-origY)/scale;
+   print(upperLeftX + ", " + upperLeftY);
+   }
+   }*/
 
   private Neighborhood[] getBGData(String filename) {
     //@emory: if u start coding next part,make some fake neighborhoods here; ill fill in code to access file
