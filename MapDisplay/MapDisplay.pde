@@ -13,10 +13,29 @@ void setup() {
 }
 void draw() {
   background(50, 140, 200);
+
   m.draw();
   
 }
 
+ /* void mousePressed(){
+    if(mouseX > 150 || mouseY < 550){
+      print("locked ");
+      m.locked = true;
+    }
+    else{
+      m.locked = false;
+    }
+  }
+  
+  void mouseDragged(){
+    if(m.locked){
+       print(pmouseX + ", " + pmouseY);
+       //print((mouseX - pmouseX)/m.scale);
+       //print((mouseY - pmouseY)/m.scale);
+    }
+    print(m.upperLeftX + ", " + m.upperLeftY + " ");
+  }*/
 
 
 

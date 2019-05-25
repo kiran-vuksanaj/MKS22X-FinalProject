@@ -4,6 +4,7 @@ class Map {
   ZoomButton zoomControl;
   DataFile data;
   int scale;
+  boolean locked;
  
   Map(DataFile source, String bgFilename) {
     regions = getBGData(bgFilename);
@@ -20,7 +21,7 @@ class Map {
   }
 
   void draw() {
-    drag();
+
     
     pushMatrix();
 
@@ -56,9 +57,24 @@ class Map {
     upperLeftX = -74.2834;
     upperLeftY = 40.9408;
   }
+  
+  /*void mousePressed(){
+    if(mouseX > 150 || mouseY < 550){
+      print("locked ");
+      locked = true;
+    }
+  }
+  
+  void mouseDragged(){
+    if(locked){
+       upperLeftX += (mouseX - pmouseX)/scale;
+       upperLeftY += (mouseY - pmouseY)/scale;
+    }
+  }
 
-  void drag() {
+  /*void drag() {
     if (mousePressed && (mouseX > 150 || mouseY < 550)) {
+      print("1");
       float origX = mouseX;
       float origY = mouseY;
       
@@ -68,12 +84,14 @@ class Map {
       while (mousePressed) {
         newX = mouseX;
         newY = mouseY;
+        print(newX + ", " + newY);
       }
       
       upperLeftX += (newX-origX)/scale;
       upperLeftY += (newY-origY)/scale;
+      print(upperLeftX + ", " + upperLeftY);
     }
-  }
+  }*/
 
   private Neighborhood[] getBGData(String filename) {
     //@emory: if u start coding next part,make some fake neighborhoods here; ill fill in code to access file
