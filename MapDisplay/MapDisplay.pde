@@ -1,4 +1,8 @@
 Map m;
+boolean locked = false;
+float currentx = 0.0;
+float currenty = 0.0;
+
 void setup() {
   DataFile d = new CSVFile("inputFiles/Subway_Entrances_Sample.csv");
   m = new Map(d,"baseFiles/NTA.csv");
@@ -11,32 +15,27 @@ void setup() {
   size(900, 680);
   background(50, 140, 200);
 }
+
 void draw() {
-  background(50, 140, 200);
- 
+  background(50, 140, 200); 
   m.draw();
   
 }
 
- /* void mousePressed(){
-    if(mouseX > 150 || mouseY < 550){
-      print("locked ");
-      m.locked = true;
-    }
-    else{
-      m.locked = false;
-    }
+ void mousePressed(){
+   if(m.upperLeftY > 150 || m.upperLeftX < 550){
+     locked = true;
+     currentx = mouseX;
+     currenty = mouseY;
+   }  
+ }
+   
+void mouseDragged(){
+  if(locked){
+    m.upperLeftX += (mouseX-currentx)/m.scale;
+    m.upperLeftY += -(mouseY-currenty)/m.scale;
   }
-  
-  void mouseDragged(){
-    if(m.locked){
-       print(pmouseX + ", " + pmouseY);
-       //print((mouseX - pmouseX)/m.scale);
-       //print((mouseY - pmouseY)/m.scale);
-    }
-    print(m.upperLeftX + ", " + m.upperLeftY + " ");
-  }*/
-
+}
 
 
 //STATIC METHODS
