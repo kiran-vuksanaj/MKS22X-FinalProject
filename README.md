@@ -29,3 +29,6 @@ displaying a map with datapoints!
 
 ### Saturday, May 25
 - Kiran: Corrected issues in Emory's drag; Wrote code to determine which region any given point falls in; wrote code to calculate the density of points for any particular neighborhood and then displayed it through a grayscale heatmap; created ability to shift between 'point' mode and 'density' mode by holding down up key
+
+### Sunday, May 26
+- Emory: Created a label explaining how to access the density map;
