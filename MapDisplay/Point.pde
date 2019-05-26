@@ -7,6 +7,8 @@ class Point{
   Point(double[] coords,String otherData){
     longitude = coords[0];
     latitude = coords[1];
+    println("latitude: "+latitude);
+    println("longitude: "+longitude);
   }
   
   void draw(int scale){
@@ -34,7 +36,10 @@ class Point{
         format of POLY/ANTIPOLY:
         (x y, x y, x y, x y, ...)
       */
-      
+      if(containedInPoly(polygon[0],longitude,latitude) &&
+         (polygon.length < 2 || !containedInPoly(polygon[1],longitude,latitude)))
+         return true;
+         //AKA: if inside main poly and if theres an antipoly its not inside that, then return true
     }
     return false;
   }
