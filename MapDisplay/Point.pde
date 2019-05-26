@@ -15,10 +15,19 @@ class Point{
     ellipse((float)(longitude),(float)(latitude),10.0/scale,10.0/scale);
   }
   
-  void assigntoRegion(Neighborhood[] regions){
-    
+  boolean assigntoRegion(Neighborhood[] regions){//returns whether successful
+    for(Neighborhood n : regions){
+      if(containedInNeighborhood(n)){
+        return true;
+      }
+    }
+    return false;
   }
   private boolean containedInNeighborhood(Neighborhood n){
+    double[][][][] region = n.polyCorners;
+    for(double[][][] polygon : region){
+      println(polygon.length > 2);
+    }
     return false;
   }
 }
