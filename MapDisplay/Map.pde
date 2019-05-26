@@ -22,7 +22,11 @@ class Map {
   }
 
   void draw() {
-
+    if(keyPressed && key==CODED && keyCode==UP){
+      mode = 1;
+    }else{
+      mode = 0;
+    }
     pushMatrix();
 
     scale(scale, -scale);
