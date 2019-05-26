@@ -52,10 +52,20 @@ class Neighborhood{
     fill(255);
     strokeWeight(0.0005);
     for(double[][][] poly : polyCorners){
-      for(double[][] innerPoly : poly){
+      /*
+      fill(r,g,b);
+      beginShape();
+      for(double[] corner : poly[0]){
+        //vertex((float)((corner[0]+74.2744)*1500), (float)((corner[1]-40.4793)*1500));
+        vertex((float)(corner[0]), (float)(corner[1]));
+      }
+      endShape();
+      */
+      if(poly.length>1){
+        fill(r,0,b);
+        println("second poly");
         beginShape();
-        for(double[] corner : innerPoly){
-          //vertex((float)((corner[0]+74.2744)*1500), (float)((corner[1]-40.4793)*1500));
+        for(double[] corner : poly[1]){
           vertex((float)(corner[0]), (float)(corner[1]));
         }
         endShape();
