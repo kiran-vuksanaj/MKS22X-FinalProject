@@ -33,8 +33,10 @@ void mousePressed() {
 
 void mouseDragged() {
   if (locked) {
-    m.upperLeftX += (mouseX-currentx)/m.scale;
-    m.upperLeftY += -(mouseY-currenty)/m.scale;
+    m.upperLeftX -= (mouseX-currentx)/m.scale;
+    m.upperLeftY -= -(mouseY-currenty)/m.scale;
+    currentx = mouseX;
+    currenty = mouseY;
   }
 }
 
