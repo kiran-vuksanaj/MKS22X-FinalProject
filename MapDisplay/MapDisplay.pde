@@ -7,10 +7,11 @@ float currenty = 0.0;
 void setup() {
   DataFile d = new CSVFile("inputFiles/Subway_Entrances_Sample.csv");
   m = new Map(d, "baseFiles/NTA.csv");
-
+  int nullCounter = 0;
   for (Point p : d.points()) {
-    p.assigntoRegion(m.regions());
+    if(!p.assigntoRegion(m.regions())) nullCounter++;
   }
+  println(float(nullCounter)/d.points().length,"% points unassigned");
 
   //size(461, 570);
   size(900, 680);
