@@ -2,7 +2,7 @@ class Neighborhood{
   float area;
   String name;
   double[][][][] polyCorners;
-  Point[] internalPoints;
+  ArrayList<Point> internalPoints;
   float r,g,b;
   
   Neighborhood(String name,float area,double[][][][] polyCorners){
@@ -12,6 +12,7 @@ class Neighborhood{
     r = random(255);
     g = random(255);
     b = random(255);
+    internalPoints = new ArrayList<Point>();
   }
   
   float getArea(){
@@ -28,7 +29,7 @@ class Neighborhood{
     return ""; //temporary
   }
   void addPoint(Point p){
-    
+    internalPoints.add(p);
   }
   String toString(){
     return "{"+name+";"+area+";"+polyCorners.length+";"+polyCorners[int(random(polyCorners.length))][0]+"}";

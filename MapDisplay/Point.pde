@@ -24,6 +24,7 @@ class Point{
     for(Neighborhood n : regions){
       if(containedInNeighborhood(n)){
         parentNeighborhood = n;
+        n.addPoint(this);
         return true;
       }
     }
