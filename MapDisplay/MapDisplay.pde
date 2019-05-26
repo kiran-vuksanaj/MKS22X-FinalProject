@@ -9,22 +9,23 @@ void setup() {
   m = new Map(d, "baseFiles/NTA.csv");
   int nullCounter = 0;
   for (Point p : d.points()) {
-    if(!p.assigntoRegion(m.regions())) nullCounter++;
+    if (!p.assigntoRegion(m.regions())) nullCounter++;
   }
-  println(float(nullCounter)/d.points().length,"% points unassigned");
+  println(float(nullCounter)/d.points().length, "% points unassigned");
   float maxDensity = 0;
-  for(Neighborhood n : m.regions()){
+  for (Neighborhood n : m.regions()) {
     //println(n.name,":",n.getDensity());
-    maxDensity = max(maxDensity,n.getDensity());
+    maxDensity = max(maxDensity, n.getDensity());
   }
   m.maxDensity = maxDensity;
-  for(Neighborhood n : m.regions()){
+  for (Neighborhood n : m.regions()) {
     //println(n.name,":",n.getDensity()/maxDensity*100.0,"%");
   }
   //size(461, 570);
   size(900, 680);
   background(50, 140, 200);
 }
+
 void draw() {
   background(50, 140, 200);
   m.draw();
@@ -37,7 +38,6 @@ void mousePressed() {
     currentx = mouseX;
     currenty = mouseY;
   }
-  
 }
 
 void mouseDragged() {
@@ -68,6 +68,7 @@ static String[][] parseCSV(BufferedReader reader, String... headers) {
     throw new IllegalArgumentException();
   }
 }
+
 static String[][] parseCSV(BufferedReader reader, int... cols) {// for use in background
   try {
     ArrayList<String> lines = getLines(reader);
@@ -92,6 +93,7 @@ private static ArrayList<String> getLines(BufferedReader reader)throws IOExcepti
   }
   return out;
 }
+
 private static String[][] getTable(ArrayList<String> lines, int... cols) {
   if (cols.length==0) {//if no input of cols, use all of them
     int tableWidth = splitIgnore(lines.get(0), ",", "(", ")").length;
@@ -108,6 +110,7 @@ private static String[][] getTable(ArrayList<String> lines, int... cols) {
   }
   return out;
 }
+
 static String[] splitIgnore(String str, String split, String open, String close) {
   boolean identicalDelims = open.equals(close);
   int depth = 0;
@@ -133,6 +136,7 @@ static String[] splitIgnore(String str, String split, String open, String close)
   String[] useless = new String[0];
   return out.toArray(useless);
 }
+
 static double[][][][] parseMultiPolygon(String str) {
   //remove outer layer guck
   str = str.substring("MULTIPOLYGON (".length()+1, str.length()-2);
@@ -180,20 +184,22 @@ static String endsOf(String str) {
 
 
 //HELPER METHODS: is point contained within a polygon
-static boolean containedInPoly(double[][] poly,double x,double y){
-  return horizontalRayCrossings(poly,x,y)%2 == 1;
+static boolean containedInPoly(double[][] poly, double x, double y) {
+  return horizontalRayCrossings(poly, x, y)%2 == 1;
 }
-static int horizontalRayCrossings(double[][] poly, double x, double y){
+
+static int horizontalRayCrossings(double[][] poly, double x, double y) {
   int out = 0;
-  for(int i=1;i<=poly.length;i++){
+  for (int i=1; i<=poly.length; i++) {
     int index = i%poly.length;//just to deal with the last one
-    if(rayCrossesSegment(poly[i-1][0],poly[i-1][1],poly[index][0],poly[index][1],x,y))
+    if (rayCrossesSegment(poly[i-1][0], poly[i-1][1], poly[index][0], poly[index][1], x, y))
       out++;
   }
   return out;
 }
-static boolean rayCrossesSegment(double x1,double y1,double x2,double y2,double xP,double yP){
-  if( (y2 > yP && y1 > yP) || (y2 < yP && y1 < yP) ) return false; //if segment too high or low, no cross
+
+static boolean rayCrossesSegment(double x1, double y1, double x2, double y2, double xP, double yP) {
+  if ( (y2 > yP && y1 > yP) || (y2 < yP && y1 < yP) ) return false; //if segment too high or low, no cross
   // segment's equation is y = ((y2-y1)/(x2-x1))*(x-x1)+y1
   // can be converted to x = ((x2-x1)/(y2-y1))*(y-y1)+x1
   // value outputted for y-vaue of point should be less than x-value of point
