@@ -2,9 +2,10 @@ Map m;
 boolean locked = false;
 float currentx = 0.0;
 float currenty = 0.0;
-
+PFont f;
 
 void setup() {
+  f = createFont("Arial",16,true);
   DataFile d = new CSVFile("inputFiles/Subway_Entrances_Sample.csv");
   m = new Map(d, "baseFiles/NTA.csv");
   int nullCounter = 0;
@@ -29,6 +30,12 @@ void setup() {
 void draw() {
   background(50, 140, 200);
   m.draw();
+  fill(212, 227, 179);
+  rect(15, 15, 255, 50);
+  fill(0);
+  textSize(20);
+  text("To view density map,", 30, 35);
+  text("press the arrow up button.", 32, 53);
 }
 
 
