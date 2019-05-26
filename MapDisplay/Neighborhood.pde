@@ -9,9 +9,9 @@ class Neighborhood{
     this.name = name;
     this.area = area;
     this.polyCorners = polyCorners;
-    r = 255;
-    g = 255;
-    b = 255;
+    r = random(255);
+    g = random(255);
+    b = random(255);
   }
   
   float getArea(){
@@ -52,7 +52,7 @@ class Neighborhood{
     fill(255);
     strokeWeight(0.0005);
     for(double[][][] poly : polyCorners){
-      fill(r,g,b);
+      fill(255);
       beginShape();
       for(double[] corner : poly[0]){
         //vertex((float)((corner[0]+74.2744)*1500), (float)((corner[1]-40.4793)*1500));

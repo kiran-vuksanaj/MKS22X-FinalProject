@@ -10,7 +10,12 @@ class Point{
   }
   
   void draw(int scale){
-    fill(0,255,207);
+    //fill(0,255,207);
+    if(parentNeighborhood == null){
+      fill(255,255,255);
+    }else{
+      fill(parentNeighborhood.r,parentNeighborhood.g,parentNeighborhood.b);
+    }
     strokeWeight(.1/scale);
     ellipse((float)(longitude),(float)(latitude),10.0/scale,10.0/scale);
   }
@@ -18,6 +23,7 @@ class Point{
   boolean assigntoRegion(Neighborhood[] regions){//returns whether successful
     for(Neighborhood n : regions){
       if(containedInNeighborhood(n)){
+        parentNeighborhood = n;
         return true;
       }
     }
