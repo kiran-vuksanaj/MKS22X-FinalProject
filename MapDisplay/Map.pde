@@ -4,6 +4,7 @@ class Map {
   ZoomButton zoomControl;
   DataFile data;
   int scale;
+  float maxDensity;
 
   Map(DataFile source, String bgFilename) {
     regions = getBGData(bgFilename);
@@ -27,10 +28,10 @@ class Map {
     fill(0, 0, 0);
 
     for (Neighborhood n : regions) {
-      n.draw();
+      n.draw(maxDensity);
     }
     for (Point p : data.points()) {
-      p.draw(scale);
+      //p.draw(scale);
     }
     popMatrix();
 

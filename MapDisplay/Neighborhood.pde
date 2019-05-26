@@ -19,8 +19,7 @@ class Neighborhood{
     return area;
   }
   float getDensity(){
-    
-    return -1; //temporary
+    return internalPoints.size()/area;
   }
   private float[] getColorScale(float density){
     return null; //temporary
@@ -47,13 +46,10 @@ class Neighborhood{
     }
     return out;
   }
-  void draw(){
-    fill(r, g, b);
-    //creating a custom polygon for each neighborhood
-    fill(255);
+  void draw(float maxDensity){
     strokeWeight(0.0005);
     for(double[][][] poly : polyCorners){
-      fill(255);
+      fill(255-getDensity()/maxDensity*255);
       beginShape();
       for(double[] corner : poly[0]){
         //vertex((float)((corner[0]+74.2744)*1500), (float)((corner[1]-40.4793)*1500));

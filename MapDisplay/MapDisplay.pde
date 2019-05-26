@@ -12,7 +12,15 @@ void setup() {
     if(!p.assigntoRegion(m.regions())) nullCounter++;
   }
   println(float(nullCounter)/d.points().length,"% points unassigned");
-
+  float maxDensity = 0;
+  for(Neighborhood n : m.regions()){
+    //println(n.name,":",n.getDensity());
+    maxDensity = max(maxDensity,n.getDensity());
+  }
+  m.maxDensity = maxDensity;
+  for(Neighborhood n : m.regions()){
+    println(n.name,":",n.getDensity()/maxDensity*100.0,"%");
+  }
   //size(461, 570);
   size(900, 680);
   background(50, 140, 200);
