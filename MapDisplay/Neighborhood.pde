@@ -52,7 +52,6 @@ class Neighborhood{
     fill(255);
     strokeWeight(0.0005);
     for(double[][][] poly : polyCorners){
-      /*
       fill(r,g,b);
       beginShape();
       for(double[] corner : poly[0]){
@@ -60,10 +59,8 @@ class Neighborhood{
         vertex((float)(corner[0]), (float)(corner[1]));
       }
       endShape();
-      */
       if(poly.length>1){
-        fill(r,0,b);
-        println("second poly");
+        fill(50,140,200); //color of water, since the second one is an antipolygon
         beginShape();
         for(double[] corner : poly[1]){
           vertex((float)(corner[0]), (float)(corner[1]));
