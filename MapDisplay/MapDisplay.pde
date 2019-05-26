@@ -184,5 +184,9 @@ static int horizontalRayCrossings(double[][] poly, double x, double y){
   return out;
 }
 static boolean rayCrossesSegment(double x1,double y1,double x2,double y2,double xP,double yP){
-  return false;
+  if( (y2 > yP && y1 > yP) || (y2 < yP && y1 < yP) ) return false; //if segment too high or low, no cross
+  // segment's equation is y = ((y2-y1)/(x2-x1))*(x-x1)+y1
+  // can be converted to x = ((x2-x1)/(y2-y1))*(y-y1)+x1
+  // value outputted for y-vaue of point should be less than x-value of point
+  return ( (y2-y1)/(x2-x1) )*(yP-y1) + x1 < xP;
 }
