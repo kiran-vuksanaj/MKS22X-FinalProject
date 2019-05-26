@@ -19,7 +19,7 @@ void setup() {
   }
   m.maxDensity = maxDensity;
   for(Neighborhood n : m.regions()){
-    println(n.name,":",n.getDensity()/maxDensity*100.0,"%");
+    //println(n.name,":",n.getDensity()/maxDensity*100.0,"%");
   }
   //size(461, 570);
   size(900, 680);

@@ -21,8 +21,11 @@ class Neighborhood{
   float getDensity(){
     return internalPoints.size()/area;
   }
-  private float[] getColorScale(float density){
-    return null; //temporary
+  private float getColorScale(float maxDensity){
+    if(maxDensity == 0){
+      return 255;
+    }
+    return 255 - getDensity()/maxDensity*255;
   }
   String getName(){
     return ""; //temporary
@@ -47,9 +50,9 @@ class Neighborhood{
     return out;
   }
   void draw(float maxDensity){
-    strokeWeight(0.0005);
+    strokeWeight(0);
     for(double[][][] poly : polyCorners){
-      fill(255-getDensity()/maxDensity*255);
+      fill(getColorScale(maxDensity));
       beginShape();
       for(double[] corner : poly[0]){
         //vertex((float)((corner[0]+74.2744)*1500), (float)((corner[1]-40.4793)*1500));
