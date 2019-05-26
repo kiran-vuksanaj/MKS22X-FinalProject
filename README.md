@@ -23,6 +23,9 @@ displaying a map with datapoints!
 - Emory: AP US History Exam
 - Kiran: Wrote code to display points and fiddled with sizes and scales to make them look good; flipped the map right side up
 
-
 ### Friday, May 24
 - Emory: Trying to make the map move by dragging; running into some trouble where the map just disappears when I drag; experimented with moving a box around in a separate file
+- Kiran: Researched how to determine what region points fall into in order to calculate neighborhood density
+
+### Saturday, May 25
+- Kiran: Corrected issues in Emory's drag; Wrote code to determine which region any given point falls in; wrote code to calculate the density of points for any particular neighborhood and then displayed it through a grayscale heatmap; created ability to shift between 'point' mode and 'density' mode by holding down up key
