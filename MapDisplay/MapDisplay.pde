@@ -8,8 +8,8 @@ void setup() {
   DataFile d = new CSVFile("inputFiles/Subway_Entrances_Sample.csv");
   m = new Map(d, "baseFiles/NTA.csv");
 
-  for (Neighborhood n : m.regions()) {
-    //println(n.toStringCoords());
+  for (Point p : d.points()) {
+    p.assigntoRegion(m.regions());
   }
 
   //size(461, 570);

@@ -26,7 +26,7 @@ class Point{
   private boolean containedInNeighborhood(Neighborhood n){
     double[][][][] region = n.polyCorners;
     for(double[][][] polygon : region){
-      println(polygon.length > 2);
+      if(polygon.length>2) println("what?");
     }
     return false;
   }
