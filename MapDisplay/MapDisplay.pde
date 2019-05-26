@@ -172,10 +172,16 @@ static String endsOf(String str) {
 
 //HELPER METHODS: is point contained within a polygon
 static boolean containedInPoly(double[][] poly,double x,double y){
-  return false;
+  return horizontalRayCrossings(poly,x,y)%2 == 1;
 }
 static int horizontalRayCrossings(double[][] poly, double x, double y){
-  return -1;
+  int out = 0;
+  for(int i=1;i<=poly.length;i++){
+    int index = i%poly.length;//just to deal with the last one
+    if(rayCrossesSegment(poly[i-1][0],poly[i-1][1],poly[index][0],poly[index][1],x,y))
+      out++;
+  }
+  return out;
 }
 static boolean rayCrossesSegment(double x1,double y1,double x2,double y2,double xP,double yP){
   return false;
