@@ -24,7 +24,7 @@ displaying a map with datapoints!
 - Kiran: Wrote code to display points and fiddled with sizes and scales to make them look good; flipped the map right side up
 
 ### Friday, May 24
-- Emory: Trying to make the map move by dragging; running into some trouble where the map just disappears when I drag; experimented with moving a box around in a separate file
+- Emory: Trying to make the map move by dragging; running into some trouble where the map just disappears when I drag; experimented with moving a box around in a separate file; moves but is moving the opposite direction of where I drag
 - Kiran: Researched how to determine what region points fall into in order to calculate neighborhood density
 
 ### Saturday, May 25
