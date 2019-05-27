@@ -31,13 +31,18 @@ void draw() {
   background(50, 140, 200);
   m.draw();
   fill(212, 227, 179);
-  rect(15, 15, 255, 50);
+  rect(15, 15, 265, 50);
   fill(0);
   textSize(20);
-  text("To view density map,", 30, 35);
-  text("press the arrow up button.", 32, 53);
+  if(m.mode == 0){
+    text("To view density map,", 26, 35);
+    text("press the arrow up button.", 28, 53);
+  }
+  
   
   if(m.mode == 1){
+    text("To view point map,", 26, 35);
+    text("release the arrow up button.", 28, 53);
     fill(255);
     rect(630, 600, 40, 40);
     fill(209);
