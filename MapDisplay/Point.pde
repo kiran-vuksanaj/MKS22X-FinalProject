@@ -15,7 +15,32 @@ class Point{
     ellipse((float)(longitude),(float)(latitude),10.0/scale,10.0/scale);
   }
   
-  void assigntoRegion(Neighborhood[] regions){
-    
+  boolean assigntoRegion(Neighborhood[] regions){//returns whether successful
+    for(Neighborhood n : regions){
+      if(containedInNeighborhood(n)){
+        parentNeighborhood = n;
+        n.addPoint(this);
+        return true;
+      }
+    }
+    return false;
+  }
+  private boolean containedInNeighborhood(Neighborhood n){
+    double[][][][] region = n.polyCorners;
+    for(double[][][] polygon : region){
+      /*FOR FUTURE NOTICE
+        format of MULTIPOLYGON:
+        (POLYGON, POLYGON, ...)
+        format of POLYGON:
+        (POLY, ANTIPOLY)
+        format of POLY/ANTIPOLY:
+        (x y, x y, x y, x y, ...)
+      */
+      if(containedInPoly(polygon[0],longitude,latitude) &&
+         (polygon.length < 2 || !containedInPoly(polygon[1],longitude,latitude)))
+         return true;
+         //AKA: if inside main poly and if theres an antipoly its not inside that, then return true
+    }
+    return false;
   }
 }

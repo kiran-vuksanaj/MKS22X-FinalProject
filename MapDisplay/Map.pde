@@ -4,7 +4,12 @@ class Map {
   ZoomButton zoomControl;
   DataFile data;
   int scale;
+<<<<<<< HEAD
   boolean locked;
+=======
+  float maxDensity;
+  int mode;
+>>>>>>> master
 
   Map(DataFile source, String bgFilename) {
     regions = getBGData(bgFilename);
@@ -18,21 +23,37 @@ class Map {
 
 
     zoomControl = new ZoomButton(this, 50, 100, 550, 650);
+    mode = 0;//point view
   }
 
   void draw() {
+<<<<<<< HEAD
   
+=======
+    if(keyPressed && key==CODED && keyCode==UP){
+      mode = 1;
+    }else{
+      mode = 0;
+    }
+>>>>>>> master
     pushMatrix();
 
     scale(scale, -scale);
     translate(-upperLeftX, -upperLeftY);
     fill(0, 0, 0);
 
-    for (Neighborhood n : regions) {
-      n.draw();
+    if(mode==1){
+      for (Neighborhood n : regions) {
+        n.draw(maxDensity);
+      }
     }
-    for (Point p : data.points()) {
-      p.draw(scale);
+    if(mode==0){
+      for(Neighborhood n : regions) {
+        n.draw(0);
+      }
+      for (Point p : data.points()) {
+        p.draw(scale);
+      }
     }
     popMatrix();
 
