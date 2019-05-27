@@ -32,3 +32,6 @@ displaying a map with datapoints!
 
 ### Sunday, May 26
 - Emory: Created a label explaining how to access the density map;
+
+### Monday, May 27
+- Emory: Created a scale reference for the density map showing what each color means; changed how far one can zoom in on the map;
