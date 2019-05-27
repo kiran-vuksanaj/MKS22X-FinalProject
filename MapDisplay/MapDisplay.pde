@@ -2,10 +2,7 @@ Map m;
 boolean locked = false;
 float currentx = 0.0;
 float currenty = 0.0;
-<<<<<<< HEAD
-=======
 PFont f;
->>>>>>> master
 
 void setup() {
   f = createFont("Arial",16,true);
@@ -31,7 +28,7 @@ void setup() {
 }
 
 void draw() {
-  background(50, 140, 200); 
+  background(50, 140, 200);
   m.draw();
   fill(212, 227, 179);
   rect(15, 15, 255, 50);
@@ -39,6 +36,24 @@ void draw() {
   textSize(20);
   text("To view density map,", 30, 35);
   text("press the arrow up button.", 32, 53);
+  
+  if(m.mode == 1){
+    fill(255);
+    rect(630, 600, 40, 40);
+    fill(209);
+    rect(670, 600, 40, 40);
+    fill(167);
+    rect(710, 600, 40, 40);
+    fill(87);
+    rect(750, 600, 40, 40);
+    fill(50);
+    rect(790, 600, 40, 40);
+    fill(0);
+    rect(830, 600, 40, 40);
+    textSize(18);
+    text("least dense", 620, 585);
+    text("most dense", 800, 585);
+  }
 }
 
 
@@ -50,23 +65,6 @@ void mousePressed() {
   }
 }
 
-<<<<<<< HEAD
- void mousePressed(){
-   if(m.upperLeftY > 150 || m.upperLeftX < 550){
-     locked = true;
-     currentx = mouseX;
-     currenty = mouseY;
-   }  
- }
-   
-void mouseDragged(){
-  if(locked){
-    m.upperLeftX += (mouseX-currentx)/m.scale;
-    m.upperLeftY += -(mouseY-currenty)/m.scale;
-  }
-}
-
-=======
 void mouseDragged() {
   if (locked) {
     m.upperLeftX -= (mouseX-currentx)/m.scale;
@@ -75,7 +73,6 @@ void mouseDragged() {
     currenty = mouseY;
   }
 }
->>>>>>> master
 
 //STATIC METHODS
 static String[][] parseCSV(BufferedReader reader, String... headers) {
@@ -200,7 +197,7 @@ static double[][][][] parseMultiPolygon(String str) {
 static double[] parsePoint(String point) {
   point = point.substring("POINT (".length(), point.length()-1);
   String[] coords = split(point, ' ');
-  double[] out = {Double.parseDouble(coords[0]), 
+  double[] out = {Double.parseDouble(coords[0]),
     Double.parseDouble(coords[1])
   };
   return out;

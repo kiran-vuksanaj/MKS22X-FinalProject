@@ -4,12 +4,8 @@ class Map {
   ZoomButton zoomControl;
   DataFile data;
   int scale;
-<<<<<<< HEAD
-  boolean locked;
-=======
   float maxDensity;
   int mode;
->>>>>>> master
 
   Map(DataFile source, String bgFilename) {
     regions = getBGData(bgFilename);
@@ -27,15 +23,11 @@ class Map {
   }
 
   void draw() {
-<<<<<<< HEAD
-  
-=======
     if(keyPressed && key==CODED && keyCode==UP){
       mode = 1;
     }else{
       mode = 0;
     }
->>>>>>> master
     pushMatrix();
 
     scale(scale, -scale);
@@ -58,7 +50,7 @@ class Map {
     popMatrix();
 
     zoomControl.draw();
-    
+
 
   }
 
@@ -79,8 +71,8 @@ class Map {
     upperLeftX = -74.2834;
     upperLeftY = 40.9408;
   }
-   
-  
+
+
 
   private Neighborhood[] getBGData(String filename) {
     //@emory: if u start coding next part,make some fake neighborhoods here; ill fill in code to access file
