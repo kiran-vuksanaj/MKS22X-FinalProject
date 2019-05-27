@@ -20,7 +20,7 @@ class ZoomButton{
   }
   void zoomIn(){
     int currentScale = exteriorMap.getScale();
-    if(currentScale < 3000){
+    if(currentScale < 5000){
       exteriorMap.setScale( currentScale + 100);
     }  
   }
