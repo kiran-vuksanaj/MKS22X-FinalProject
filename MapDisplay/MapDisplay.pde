@@ -1,14 +1,15 @@
 Map m;
+Menu menu;
 boolean locked = false;
 float currentx = 0.0;
 float currenty = 0.0;
 int mode;
 
 void setup(){
-  mode = 2;
   size(900, 680);
   background(50, 140, 200);
-  setupMap("inputFiles/Subway_Entrances_Sample.csv");
+  switchToMenu();
+  //setupMap("inputFiles/Subway_Entrances_Sample.csv");
 }
 
 void setupMap(String filename) {
@@ -22,6 +23,10 @@ void setupMap(String filename) {
   m.getMaxDensity();
   //size(461, 570);
 }
+void switchToMenu(){
+  mode = 2;
+  menu = new Menu();
+}
 void draw() {
   /* temporarily removing access to density mode to simplify menu coding
   if(keyPressed && key==CODED && keyCode==UP){
@@ -31,7 +36,11 @@ void draw() {
     }
   */
   background(50, 140, 200);
-  m.draw(mode);
+  if(mode==2){
+    menu.draw()
+  }else{
+    m.draw(mode);
+  }
 }
 
 

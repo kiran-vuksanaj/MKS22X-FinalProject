@@ -3,7 +3,6 @@ class Map {
   float upperLeftX, upperLeftY, coordWidth;
   ZoomButton zoomControl;
   DataFile data;
-  Menu m;
   int scale;
   float maxDensity;
 
@@ -18,7 +17,6 @@ class Map {
     scale = 1400;
 
     zoomControl = new ZoomButton(this, 50, 100, 550, 650);
-    m = new Menu();
   }
   void getMaxDensity(){
     float maxDensity = 0;
@@ -30,31 +28,26 @@ class Map {
   
 
   void draw(int mode) {
-    if(mode==2){
-      m.draw(); //draw menu
-    }
-    else{
-      pushMatrix();
-  
-      scale(scale, -scale);
-      translate(-upperLeftX, -upperLeftY);
-      fill(0, 0, 0);
-      if(mode==1){
-        for (Neighborhood n : regions) {
-          n.draw(maxDensity);
-        }
+    pushMatrix();
+
+    scale(scale, -scale);
+    translate(-upperLeftX, -upperLeftY);
+    fill(0, 0, 0);
+    if(mode==1){
+      for (Neighborhood n : regions) {
+        n.draw(maxDensity);
       }
-      else if(mode==0){
-        for(Neighborhood n : regions) {
-          n.draw(0);
-        }
-        for (Point p : data.points()) {
-          p.draw(scale);
-        }
-      }
-      popMatrix();
-      zoomControl.draw();
     }
+    else if(mode==0){
+      for(Neighborhood n : regions) {
+        n.draw(0);
+      }
+      for (Point p : data.points()) {
+        p.draw(scale);
+      }
+    }
+    popMatrix();
+    zoomControl.draw();
   }
 
   void setScale(int newScale) {
