@@ -8,20 +8,29 @@ class Point{
   Point(double[] coords,String otherData){
     longitude = coords[0];
     latitude = coords[1];
+    Popup extraData = new Popup(this, "name", info);
   }
   
   void draw(int scale){
     fill(0,255,207);
     strokeWeight(.1/scale);
     ellipse((float)(longitude),(float)(latitude),10.0/scale,10.0/scale);
+    if(clickedHere()){
+      print("here ");
+    }
   }
   
   boolean clickedHere(){
+    print(longitude*m.scale-m.upperLeftX + "," + (latitude*-m.scale-m.upperLeftY));
     if(mouseX == longitude*m.scale-m.upperLeftX && mouseY == latitude*-m.scale-m.upperLeftY){
-      Popup extraData = new Popup(this, "name", info);
+      showPopup = true;
+      print("point ");
+      return true;
     }
-    
-    return false;
+    else{
+      showPopup = false;
+      return false;
+    }
   }
   
   boolean assigntoRegion(Neighborhood[] regions){//returns whether successful
