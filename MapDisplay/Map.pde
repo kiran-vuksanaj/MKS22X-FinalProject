@@ -5,7 +5,6 @@ class Map {
   DataFile data;
   int scale;
   float maxDensity;
-  int mode;
 
   Map(DataFile source, String bgFilename) {
     regions = getBGData(bgFilename);
@@ -18,7 +17,6 @@ class Map {
     scale = 1400;
 
     zoomControl = new ZoomButton(this, 50, 100, 550, 650);
-    mode = 0;//point view
   }
   void getMaxDensity(){
     float maxDensity = 0;
@@ -29,12 +27,7 @@ class Map {
   }
   
 
-  void draw() {
-    if(keyPressed && key==CODED && keyCode==UP){
-      mode = 1;
-    }else{
-      mode = 0;
-    }
+  void draw(int mode) {
     pushMatrix();
 
     scale(scale, -scale);

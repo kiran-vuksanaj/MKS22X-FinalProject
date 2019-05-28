@@ -2,9 +2,15 @@ Map m;
 boolean locked = false;
 float currentx = 0.0;
 float currenty = 0.0;
+int mode;
 
+void setup(){
+  mode = 2;
+  size(900, 680);
+  background(50, 140, 200);
+}
 
-void setup() {
+void setupMap() {
   DataFile d = new CSVFile("inputFiles/Subway_Entrances_Sample.csv");
   m = new Map(d, "baseFiles/NTA.csv");
   
@@ -15,12 +21,15 @@ void setup() {
   println(float(nullCounter)/d.points().length,"% points unassigned");
   m.getMaxDensity();
   //size(461, 570);
-  size(900, 680);
-  background(50, 140, 200);
 }
 void draw() {
+  if(keyPressed && key==CODED && keyCode==UP){
+      mode = 1;
+    }else{
+      mode = 0;
+    }
   background(50, 140, 200);
-  m.draw();
+  m.draw(mode);
 }
 
 
