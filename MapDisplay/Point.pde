@@ -2,6 +2,7 @@ class Point{
   double latitude,longitude;
   Popup extraData;
   Neighborhood parentNeighborhood;
+  String info;
   boolean showPopup;
   
   Point(double[] coords,String otherData){
@@ -13,6 +14,14 @@ class Point{
     fill(0,255,207);
     strokeWeight(.1/scale);
     ellipse((float)(longitude),(float)(latitude),10.0/scale,10.0/scale);
+  }
+  
+  boolean clickedHere(){
+    if(mouseX == longitude*m.scale-m.upperLeftX && mouseY == latitude*-m.scale-m.upperLeftY){
+      Popup extraData = new Popup(this, "name", info);
+    }
+    
+    return false;
   }
   
   boolean assigntoRegion(Neighborhood[] regions){//returns whether successful
