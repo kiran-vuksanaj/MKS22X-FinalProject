@@ -17,6 +17,7 @@ class Map {
     upperLeftY = 40.9408; //currently bottom left because its going to be flipped
     scale = 1400;
 
+
     zoomControl = new ZoomButton(this, 50, 100, 550, 650);
     mode = 0;//point view
   }
@@ -49,6 +50,8 @@ class Map {
     popMatrix();
 
     zoomControl.draw();
+
+
   }
 
   void setScale(int newScale) {
@@ -69,8 +72,7 @@ class Map {
     upperLeftY = 40.9408;
   }
 
-  void drag() {
-  }
+
 
   private Neighborhood[] getBGData(String filename) {
     //@emory: if u start coding next part,make some fake neighborhoods here; ill fill in code to access file

@@ -24,8 +24,14 @@ displaying a map with datapoints!
 - Kiran: Wrote code to display points and fiddled with sizes and scales to make them look good; flipped the map right side up
 
 ### Friday, May 24
-- Emory: Trying to make the map move by dragging; running into some trouble where the map just disappears when I drag; experimented with moving a box around in a separate file
+- Emory: Trying to make the map move by dragging; running into some trouble where the map just disappears when I drag; experimented with moving a box around in a separate file; moves but is moving the opposite direction of where I drag
 - Kiran: Researched how to determine what region points fall into in order to calculate neighborhood density
 
 ### Saturday, May 25
 - Kiran: Corrected issues in Emory's drag; Wrote code to determine which region any given point falls in; wrote code to calculate the density of points for any particular neighborhood and then displayed it through a grayscale heatmap; created ability to shift between 'point' mode and 'density' mode by holding down up key
+
+### Sunday, May 26
+- Emory: Created a label explaining how to access the density map;
+
+### Monday, May 27
+- Emory: Created a scale reference for the density map showing what each color means; changed how far one can zoom in on the map;
