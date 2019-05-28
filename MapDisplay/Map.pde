@@ -20,6 +20,14 @@ class Map {
     zoomControl = new ZoomButton(this, 50, 100, 550, 650);
     mode = 0;//point view
   }
+  void getMaxDensity(){
+    float maxDensity = 0;
+    for(Neighborhood n : regions()){
+      maxDensity = max(maxDensity,n.getDensity());
+    }
+    this.maxDensity = maxDensity;
+  }
+  
 
   void draw() {
     if(keyPressed && key==CODED && keyCode==UP){

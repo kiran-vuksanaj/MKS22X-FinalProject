@@ -7,20 +7,13 @@ float currenty = 0.0;
 void setup() {
   DataFile d = new CSVFile("inputFiles/Subway_Entrances_Sample.csv");
   m = new Map(d, "baseFiles/NTA.csv");
+  
   int nullCounter = 0;
   for (Point p : d.points()) {
     if(!p.assigntoRegion(m.regions())) nullCounter++;
   }
   println(float(nullCounter)/d.points().length,"% points unassigned");
-  float maxDensity = 0;
-  for(Neighborhood n : m.regions()){
-    //println(n.name,":",n.getDensity());
-    maxDensity = max(maxDensity,n.getDensity());
-  }
-  m.maxDensity = maxDensity;
-  for(Neighborhood n : m.regions()){
-    //println(n.name,":",n.getDensity()/maxDensity*100.0,"%");
-  }
+  m.getMaxDensity();
   //size(461, 570);
   size(900, 680);
   background(50, 140, 200);
