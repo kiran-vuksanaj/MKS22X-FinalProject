@@ -5,6 +5,9 @@ class Menu{
   void draw(){
     
   }
+  DataFile getDataFile(){
+    return null;
+  }
 }
 class TextBox{
   

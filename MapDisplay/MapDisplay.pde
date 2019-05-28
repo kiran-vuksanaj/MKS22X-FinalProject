@@ -12,8 +12,7 @@ void setup(){
   //setupMap("inputFiles/Subway_Entrances_Sample.csv");
 }
 
-void setupMap(String filename) {
-  DataFile d = new CSVFile(filename);
+void setupMap(DataFile d) {
   m = new Map(d, "baseFiles/NTA.csv");
   int nullCounter = 0;
   for (Point p : d.points()) {
@@ -27,6 +26,10 @@ void switchToMenu(){
   mode = 2;
   menu = new Menu();
 }
+void exitMenu(){
+  mode = 2;
+  setupMap(menu.getDataFile());
+}
 void draw() {
   /* temporarily removing access to density mode to simplify menu coding
   if(keyPressed && key==CODED && keyCode==UP){
@@ -37,7 +40,7 @@ void draw() {
   */
   background(50, 140, 200);
   if(mode==2){
-    menu.draw()
+    menu.draw();
   }else{
     m.draw(mode);
   }
