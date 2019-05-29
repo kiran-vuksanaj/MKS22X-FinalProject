@@ -10,6 +10,9 @@ class Menu{
     cols = new ColumnSelector(100,480);
     submit = new SubmitButton(800,530);
   }
+  void keyPressed(){
+    
+  }
   void draw(){
     
   }

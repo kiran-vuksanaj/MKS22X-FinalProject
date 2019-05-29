@@ -46,6 +46,11 @@ void draw() {
   }
 }
 
+void keyPressed(){
+  if(mode==2){
+    m.keyPressed();
+  }
+}
 
 void mousePressed() {
   if (m.upperLeftY >150 || m.upperLeftY < 550) {
@@ -53,7 +58,7 @@ void mousePressed() {
     currentx = mouseX;
     currenty = mouseY;
   }
-  
+
 }
 
 void mouseDragged() {
@@ -184,7 +189,7 @@ static double[][][][] parseMultiPolygon(String str) {
 static double[] parsePoint(String point) {
   point = point.substring("POINT (".length(), point.length()-1);
   String[] coords = split(point, ' ');
-  double[] out = {Double.parseDouble(coords[0]), 
+  double[] out = {Double.parseDouble(coords[0]),
     Double.parseDouble(coords[1])
   };
   return out;
