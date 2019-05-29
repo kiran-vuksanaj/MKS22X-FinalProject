@@ -7,13 +7,12 @@ class Menu{
   Menu(){
     step = 0;
     filename = new TextBox(100,100);
-    //cols = new ColumnSelector(100,480);
     //submit = new SubmitButton(800,530);
   }
   void keyPressed(){
     if(step==0){//keystrokes only do something if on step 0
       if(key==ENTER||key==RETURN){
-        step = 1;
+        enterColumnStep();
       }else{
         filename.add(key);
       }
@@ -27,6 +26,9 @@ class Menu{
   }
   DataFile getDataFile(){
     return null;
+  }
+  void enterColumnStep(){
+    cols = new ColumnSelector(100,480);
   }
 }
 class TextBox{
@@ -43,9 +45,17 @@ class TextBox{
   void draw(){
     text("filename (click enter when complete): "+input,r,c);
   }
+  String textInput(){
+    return input;
+  }
 }
 class ColumnSelector{
-  
+  ColumnSelector(float r,float c){
+    
+  }
+  void draw(){
+    
+  }
 }
 class SubmitButton{
   
