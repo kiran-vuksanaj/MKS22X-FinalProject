@@ -3,9 +3,9 @@ class CSVFile extends DataFile{
  String[] headers;
  BufferedReader reader;
  CSVFile(String filename){
-   BufferedReader r = createReader(filename);
+   reader = createReader(filename);
    try{
-     String firstLine = r.readLine();
+     String firstLine = reader.readLine();
      headers = splitIgnore(firstLine,",","\"","\"");
    }catch(IOException e){
      throw new IllegalArgumentException("empty file");

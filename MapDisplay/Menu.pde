@@ -1,13 +1,14 @@
 class Menu {
   int step;
-  DataFile data;
+  MapDisplay external;
+  CSVFile data;
   TextBox filename;
   ColumnSelector cols;
   SubmitButton submit;
-  Menu() {
+  Menu(MapDisplay parent) {
     step = 0;
     filename = new TextBox(100, 100);
-    //submit = new SubmitButton(800,530);
+    external = parent;
   }
   void keyPressed() {
     if (step==0) {//keystrokes only do something if on step 0
@@ -33,7 +34,7 @@ class Menu {
     }
   }
   DataFile getDataFile() {
-    return null;
+    return data;
   }
   void enterColumnStep() {
     data = new CSVFile(filename.textInput());
@@ -41,12 +42,18 @@ class Menu {
     submit = new SubmitButton(400, 480, 100, 200, this);
     step = 1;
   }
+  void exitMenu() {
+    step = 2;
+    data.getData(cols.getCols());
+    external.exitMenu();
+  }
   boolean mousePressed() {
     if (step==1) {
       return cols.mousePressed() || submit.mousePressed(); //using short circuiting here
     }
     return false;
   }
+  
 }
 class TextBox {
   float r, c;

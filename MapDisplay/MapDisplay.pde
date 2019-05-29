@@ -24,7 +24,7 @@ void setupMap(DataFile d) {//assumption that a menu has gotten the data in the d
 }
 void switchToMenu(){
   mode = 2;
-  menu = new Menu();
+  menu = new Menu(this);
 }
 void exitMenu(){
   mode = 2;
@@ -96,6 +96,7 @@ static String[][] parseCSV(BufferedReader reader, String... headers) {
 }
 static String[][] parseCSV(BufferedReader reader, int... cols) {// for use in background
   try {
+    printArray(cols);
     ArrayList<String> lines = getLines(reader);
     return getTable(lines, cols);
   }
