@@ -28,6 +28,7 @@ class Menu {
     case 1:
       filename.draw();
       cols.draw();
+      submit.draw();
       break;
     }
   }
@@ -37,6 +38,7 @@ class Menu {
   void enterColumnStep() {
     data = new CSVFile(filename.textInput());
     cols = new ColumnSelector(100, 480, data.getHeaders());
+    submit = new SubmitButton(400,480,100,200,this);
     step = 1;
   }
   boolean mousePressed() {
@@ -135,5 +137,22 @@ class ColumnSelector {
   }
 }
 class SubmitButton {
-  
+  float r,c,h,w;
+  Menu parent;
+  SubmitButton(float r,float c,float h,float w,Menu parent){
+    this.r = r;
+    this.c = c;
+    this.h = h;
+    this.w = w;
+    this.parent = parent;
+  }
+  void draw(){
+    fill(255,0,255);
+    rect(c,r,w,h,5);
+    fill(0);
+    text("SUBMIT",c+3,r+h/2);
+  }
+  void mousePressed(){
+    
+  }
 }
