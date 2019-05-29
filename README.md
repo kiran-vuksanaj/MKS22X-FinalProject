@@ -38,3 +38,5 @@ displaying a map with datapoints!
 
 ### Tuesday, May 28
 - Emory : Starting to work with the popups for each point; trying to figure out how to click on each individual point
+- Kiran : (includes a couple of commits past midnight) Designed and then built a menu in order to select an arbitrary file and columns within it for which data to display in popups; accesses file named in text box, allows user to choose relevant columns, upon submit launches the normal map (still needs some design changes)
+
