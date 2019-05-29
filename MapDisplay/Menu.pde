@@ -87,8 +87,8 @@ class ColumnSelector {
   boolean mousePressed() {
     if (mouseX > c && mouseX < c+80 && 
       mouseY > r && mouseY < r+(20*buttons.length)) {
-      println("one of the buttons pressed");
-      return true;
+      int idx = (int)((mouseY - r)/20);
+      buttons[idx].chosen = !buttons[idx].chosen;
     }
     return false;
   }
@@ -103,7 +103,11 @@ class ColumnSelector {
       chosen = false;
     }
     void draw() {
-      fill(255);
+      if(chosen){
+        fill(255,0,255);
+      }else{
+        fill(255);
+      }
       rect(c, r, 80, 20, 5);
       fill(0);
       text(name, c+2, r+16);
