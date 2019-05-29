@@ -24,6 +24,11 @@ class Menu{
     switch(step){
       case 0:
         filename.draw();
+        break;
+      case 1:
+        filename.draw();
+        cols.draw();
+        break;
     }
   }
   DataFile getDataFile(){
@@ -60,11 +65,12 @@ class ColumnSelector{
   float r,c;
   Button[] buttons;
   ColumnSelector(float r,float c,String[] options){
+    println("hm");
     this.r = r;
     this.c = c;
     buttons = new Button[options.length];
     for(int i=0;i<buttons.length;i++){
-      buttons[i] = new Button(r+20*i,c,options[i]);
+      buttons[i] = new Button(r+(20*i),c,options[i]);
     }
   }
   void draw(){
@@ -84,8 +90,9 @@ class ColumnSelector{
     }
     void draw(){
       fill(255);
-      rect(r,c,80,20,5);
-      text(name,r+4,c);
+      rect(c,r,80,20,5);
+      fill(0);
+      text(name,c+2,r+16);
     }
   }
 }
