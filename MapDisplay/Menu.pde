@@ -53,12 +53,31 @@ class TextBox{
 }
 class ColumnSelector{
   float r,c;
-  String[] options;
+  Button[] buttons;
   ColumnSelector(float r,float c,String[] options){
-    
+    this.r = r;
+    this.c = c;
+    buttons = new Button[options.length];
+    for(int i=0;i<buttons.length;i++){
+      buttons[i] = new Button(r+20*i,c,options[i]);
+    }
   }
   void draw(){
     
+  }
+  private class Button{
+    float r,c;
+    String name;
+    boolean chosen;
+    Button(float r,float c,String name){
+      this.r = r;
+      this.c = c;
+      this.name = name;
+      chosen = false;
+    }
+    void draw(){
+      
+    }
   }
 }
 class SubmitButton{
