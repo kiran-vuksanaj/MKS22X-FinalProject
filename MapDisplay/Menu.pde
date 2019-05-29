@@ -11,7 +11,13 @@ class Menu{
     submit = new SubmitButton(800,530);
   }
   void keyPressed(){
-    
+    if(step==0){//keystrokes only do something if on step 0
+      if(key==ENTER||key==RETURN){
+        step = 1;
+      }else{
+        filename.add(key);
+      }
+    }
   }
   void draw(){
     
@@ -21,7 +27,17 @@ class Menu{
   }
 }
 class TextBox{
-  
+  float x,y;
+  String input;
+  TextBox(float x,float y){
+    
+  }
+  void add(char c){
+    input += c;
+  }
+  void draw(){
+    
+  }
 }
 class ColumnSelector{
   
