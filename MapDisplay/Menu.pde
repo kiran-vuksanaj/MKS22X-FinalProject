@@ -13,7 +13,9 @@ class Menu{
     if(step==0){//keystrokes only do something if on step 0
       if(key==ENTER||key==RETURN){
         enterColumnStep();
-      }else{
+      }else if(key==BACKSPACE){
+        filename.backspace();
+      }else if(key!=CODED){
         filename.add(key);
       }
     }
@@ -43,6 +45,9 @@ class TextBox{
   }
   void add(char c){
     input += c;
+  }
+  void backspace(){
+    input = input.substring(0,input.length()-1);
   }
   void draw(){
     text("filename (click enter when complete): "+input,r,c);
