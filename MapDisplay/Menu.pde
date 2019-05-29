@@ -82,14 +82,21 @@ class ColumnSelector {
   ColumnSelector(float r, float c, String[] options) {
     this.r = r;
     this.c = c;
-    buttons = new Button[options.length];
+    buttons = new Button[options.length-1];
     for (int i=0; i<buttons.length; i++) {
-      buttons[i] = new Button(r+(20*i), c, options[i]);
+      if(!options[i].equals("the_geom")){
+        buttons[i] = new Button(r+(20*i), c, options[i]);
+      }
+      
     }
   }
   void draw() {
     for (Button b : buttons) {
-      b.draw();
+      if(!b.name.equals("the_geom")){
+        print(b.name);
+        b.draw();
+      }
+      
     }
   }
   boolean mousePressed() {
