@@ -31,13 +31,6 @@ void exitMenu(){
   setupMap(menu.getDataFile());
 }
 void draw() {
-  /* temporarily removing access to density mode to simplify menu coding
-  if(keyPressed && key==CODED && keyCode==UP){
-      mode = 1;
-    }else{
-      mode = 0;
-    }
-  */
   background(50, 140, 200);
   if(mode==2){
     menu.draw();
@@ -49,6 +42,11 @@ void draw() {
 void keyPressed(){
   if(mode==2){
     menu.keyPressed();
+  }else{
+    if(key==CODED && keyCode == UP){
+      if(mode==0) mode = 1;
+      else if(mode==1) mode = 0;
+    }
   }
 }
 
