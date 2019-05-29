@@ -38,12 +38,12 @@ class Menu {
   void enterColumnStep() {
     data = new CSVFile(filename.textInput());
     cols = new ColumnSelector(100, 480, data.getHeaders());
-    submit = new SubmitButton(400,480,100,200,this);
+    submit = new SubmitButton(400, 480, 100, 200, this);
     step = 1;
   }
   boolean mousePressed() {
     if (step==1) {
-      return cols.mousePressed();// || submit.mousePressed(); //using short circuiting here
+      return cols.mousePressed() || submit.mousePressed(); //using short circuiting here
     }
     return false;
   }
@@ -94,18 +94,18 @@ class ColumnSelector {
     }
     return false;
   }
-  private int countOn(){
+  private int countOn() {
     int out = 0;
-    for(Button b : buttons){
-      if(b.chosen) out++;
+    for (Button b : buttons) {
+      if (b.chosen) out++;
     }
     return out;
   }
-  int[] getCols(){
+  int[] getCols() {
     int[] out = new int[countOn()];
     int c = 0;
-    for(int i=0;i<buttons.length;i++){
-      if(buttons[i].chosen){
+    for (int i=0; i<buttons.length; i++) {
+      if (buttons[i].chosen) {
         out[c++] = i;
       }
     }
@@ -122,37 +122,42 @@ class ColumnSelector {
       chosen = false;
     }
     void draw() {
-      if(chosen){
-        fill(255,0,255);
-      }else{
+      if (chosen) {
+        fill(255, 0, 255);
+      } else {
         fill(255);
       }
       rect(c, r, 80, 20, 5);
       fill(0);
       text(name, c+2, r+16);
     }
-    void toggle(){
+    void toggle() {
       chosen = !chosen;
     }
   }
 }
 class SubmitButton {
-  float r,c,h,w;
+  float r, c, h, w;
   Menu parent;
-  SubmitButton(float r,float c,float h,float w,Menu parent){
+  SubmitButton(float r, float c, float h, float w, Menu parent) {
     this.r = r;
     this.c = c;
     this.h = h;
     this.w = w;
     this.parent = parent;
   }
-  void draw(){
-    fill(255,0,255);
-    rect(c,r,w,h,5);
+  void draw() {
+    fill(255, 0, 255);
+    rect(c, r, w, h, 5);
     fill(0);
-    text("SUBMIT",c+3,r+h/2);
+    text("SUBMIT", c+3, r+h/2);
   }
-  void mousePressed(){
-    
+  boolean mousePressed() {
+    if (mouseX > c && mouseX < c+h &&
+      mouseY > r && mouseY < r+h) {
+      parent.exitMenu();
+      return true;
+    }
+    return false;
   }
 }
