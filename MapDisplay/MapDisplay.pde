@@ -48,25 +48,28 @@ void draw() {
 
 void keyPressed(){
   if(mode==2){
-    m.keyPressed();
+    menu.keyPressed();
   }
 }
 
 void mousePressed() {
-  if (m.upperLeftY >150 || m.upperLeftY < 550) {
-    locked = true;
-    currentx = mouseX;
-    currenty = mouseY;
+  if(mode != 2){
+    if (m.upperLeftY >150 || m.upperLeftY < 550) {
+      locked = true;
+      currentx = mouseX;
+      currenty = mouseY;
+    }
   }
-
 }
 
 void mouseDragged() {
-  if (locked) {
-    m.upperLeftX -= (mouseX-currentx)/m.scale;
-    m.upperLeftY -= -(mouseY-currenty)/m.scale;
-    currentx = mouseX;
-    currenty = mouseY;
+  if(mode != 2){
+    if (locked) {
+      m.upperLeftX -= (mouseX-currentx)/m.scale;
+      m.upperLeftY -= -(mouseY-currenty)/m.scale;
+      currentx = mouseX;
+      currenty = mouseY;
+    }
   }
 }
 
