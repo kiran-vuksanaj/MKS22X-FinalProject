@@ -12,7 +12,7 @@ void setup(){
   //setupMap("inputFiles/Subway_Entrances_Sample.csv");
 }
 
-void setupMap(DataFile d) {
+void setupMap(DataFile d) {//assumption that a menu has gotten the data in the datafile
   m = new Map(d, "baseFiles/NTA.csv");
   int nullCounter = 0;
   for (Point p : d.points()) {
