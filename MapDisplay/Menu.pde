@@ -80,7 +80,6 @@ class ColumnSelector {
   float r, c;
   Button[] buttons;
   ColumnSelector(float r, float c, String[] options) {
-    println("hm");
     this.r = r;
     this.c = c;
     buttons = new Button[options.length];
