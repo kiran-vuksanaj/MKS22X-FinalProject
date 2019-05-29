@@ -4,13 +4,13 @@ class Point{
   Neighborhood parentNeighborhood;
   String info;
   boolean showPopup;
-  
+
   Point(double[] coords,String otherData){
     longitude = coords[0];
     latitude = coords[1];
-    Popup extraData = new Popup(this, "name", info);
+    extraData = new Popup(this,"",otherData);
   }
-  
+
   void draw(int scale){
     fill(0,255,207);
     strokeWeight(.1/scale);
@@ -19,7 +19,7 @@ class Point{
       print("here ");
     }
   }
-  
+
   boolean clickedHere(){
     //print(longitude + "," + latitude);
     if(mouseX == longitude && mouseY == latitude){
@@ -32,7 +32,7 @@ class Point{
       return false;
     }
   }
-  
+
   boolean assigntoRegion(Neighborhood[] regions){//returns whether successful
     for(Neighborhood n : regions){
       if(containedInNeighborhood(n)){

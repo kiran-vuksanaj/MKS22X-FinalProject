@@ -1,81 +1,106 @@
 Map m;
+Menu menu;
 boolean locked = false;
 float currentx = 0.0;
 float currenty = 0.0;
 PFont f;
+int mode;
 
-void setup() {
-  f = createFont("Arial",16,true);
-  DataFile d = new CSVFile("inputFiles/Subway_Entrances_Sample.csv");
+void setup(){
+  size(900, 680);
+  background(50, 140, 200);
+  switchToMenu();
+  //setupMap("inputFiles/Subway_Entrances_Sample.csv");
+}
+
+void setupMap(DataFile d) {//assumption that a menu has gotten the data in the datafile
   m = new Map(d, "baseFiles/NTA.csv");
   int nullCounter = 0;
   for (Point p : d.points()) {
     if (!p.assigntoRegion(m.regions())) nullCounter++;
   }
-  println(float(nullCounter)/d.points().length, "% points unassigned");
-  float maxDensity = 0;
-  for (Neighborhood n : m.regions()) {
-    //println(n.name,":",n.getDensity());
-    maxDensity = max(maxDensity, n.getDensity());
-  }
-  m.maxDensity = maxDensity;
-  for (Neighborhood n : m.regions()) {
-    //println(n.name,":",n.getDensity()/maxDensity*100.0,"%");
-  }
+  println(float(nullCounter)/d.points().length,"% points unassigned");
+  m.getMaxDensity();
   //size(461, 570);
-  size(900, 680);
-  background(50, 140, 200);
+}
+void switchToMenu(){
+  mode = 2;
+  menu = new Menu(this);
+}
+void exitMenu(){
+  mode = 0;
+  setupMap(menu.getDataFile());
 }
 
 void draw() {
   background(50, 140, 200);
-  m.draw();
-  fill(212, 227, 179);
-  rect(15, 15, 265, 50);
-  fill(0);
-  textSize(20);
-  if(m.mode == 0){
-    text("To view density map,", 26, 35);
-    text("press the arrow up button.", 28, 53);
-  }
-  
-  
-  if(m.mode == 1){
-    text("To view point map,", 26, 35);
-    text("release the arrow up button.", 28, 53);
-    fill(255);
-    rect(630, 600, 40, 40);
-    fill(209);
-    rect(670, 600, 40, 40);
-    fill(167);
-    rect(710, 600, 40, 40);
-    fill(87);
-    rect(750, 600, 40, 40);
-    fill(50);
-    rect(790, 600, 40, 40);
+  if(mode != 2){
+    m.draw(mode);
+    fill(212, 227, 179);
+    rect(15, 15, 265, 50);
     fill(0);
-    rect(830, 600, 40, 40);
-    textSize(18);
-    text("least dense", 620, 585);
-    text("most dense", 800, 585);
+    textSize(20);
+    if(mode == 0){
+      text("To view density map,", 26, 35);
+      text("press the arrow up button.", 28, 53);
+    }
+
+
+    if(mode == 1){
+      text("To view point map,", 26, 35);
+      text("release the arrow up button.", 28, 53);
+      fill(255);
+      rect(630, 600, 40, 40);
+      fill(209);
+      rect(670, 600, 40, 40);
+      fill(167);
+      rect(710, 600, 40, 40);
+      fill(87);
+      rect(750, 600, 40, 40);
+      fill(50);
+      rect(790, 600, 40, 40);
+      fill(0);
+      rect(830, 600, 40, 40);
+      textSize(18);
+      text("least dense", 620, 585);
+      text("most dense", 800, 585);
+    }
+  }else{
+    menu.draw();
   }
 }
 
+void keyPressed(){
+  if(mode==2){
+    menu.keyPressed();
+  }else{
+    if(key==CODED && keyCode == UP){
+      if(mode==0) mode = 1;
+      else if(mode==1) mode = 0;
+    }
+  }
+}
 
 void mousePressed() {
-  if (m.upperLeftY >150 || m.upperLeftY < 550) {
-    locked = true;
-    currentx = mouseX;
-    currenty = mouseY;
+  if(mode != 2){
+    if (m.upperLeftY >150 || m.upperLeftY < 550) {
+      locked = true;
+      currentx = mouseX;
+      currenty = mouseY;
+    }
+  }else{//when menu is active
+    menu.mousePressed();
   }
 }
 
 void mouseDragged() {
-  if (locked) {
-    m.upperLeftX -= (mouseX-currentx)/m.scale;
-    m.upperLeftY -= -(mouseY-currenty)/m.scale;
-    currentx = mouseX;
-    currenty = mouseY;
+  if(mode != 2){
+    if (locked) {
+      m.upperLeftX -= (mouseX-currentx)/m.scale;
+      m.upperLeftY -= -(mouseY-currenty)/m.scale;
+      currentx = mouseX;
+      currenty = mouseY;
+    }
   }
 }
 

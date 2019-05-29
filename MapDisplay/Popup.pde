@@ -3,7 +3,7 @@ class Popup{
   Point parentPoint;
   
   Popup(Point parent,String name,String info){
-    
+    //println(info);
   }
   
   String getInfo(){
