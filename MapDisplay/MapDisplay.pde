@@ -27,7 +27,7 @@ void switchToMenu(){
   menu = new Menu(this);
 }
 void exitMenu(){
-  mode = 2;
+  mode = 0;
   setupMap(menu.getDataFile());
 }
 void draw() {
