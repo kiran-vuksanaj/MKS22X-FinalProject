@@ -59,6 +59,8 @@ void mousePressed() {
       currentx = mouseX;
       currenty = mouseY;
     }
+  }else{//when menu is active
+    menu.mousePressed();
   }
 }
 
