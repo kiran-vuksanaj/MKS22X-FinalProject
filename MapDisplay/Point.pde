@@ -15,14 +15,14 @@ class Point{
     fill(0,255,207);
     strokeWeight(.1/scale);
     ellipse((float)(longitude),(float)(latitude),10.0/scale,10.0/scale);
-    if(clickedHere()){
+    if(mousePressed && clickedHere()){
       print("here ");
     }
   }
   
   boolean clickedHere(){
-    print(longitude*m.scale-m.upperLeftX + "," + (latitude*-m.scale-m.upperLeftY));
-    if(mouseX == longitude*m.scale-m.upperLeftX && mouseY == latitude*-m.scale-m.upperLeftY){
+    //print(longitude + "," + latitude);
+    if(mouseX == longitude && mouseY == latitude){
       showPopup = true;
       print("point ");
       return true;
