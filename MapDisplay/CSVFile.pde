@@ -19,7 +19,7 @@ class CSVFile extends DataFile{
    data = new Point[csv.length-1];
    for(int i=1;i<csv.length;i++){//skipping header
      double[] coords = parsePoint(csv[i][0]);
-     data[i-1] = new Point(coords,"");
+     data[i-1] = new Point(coords,join(csv[i],"\n"));
    }
  }
  Point[] points(){
