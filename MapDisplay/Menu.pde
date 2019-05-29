@@ -38,8 +38,8 @@ class Menu {
   }
   void enterColumnStep() {
     data = new CSVFile(filename.textInput());
-    cols = new ColumnSelector(100, 480, data.getHeaders());
-    submit = new SubmitButton(400, 480, 100, 200, this);
+    cols = new ColumnSelector(150, 200, data.getHeaders());
+    submit = new SubmitButton(150, 480, 100, 200, this);
     step = 1;
   }
   void exitMenu() {
@@ -110,7 +110,7 @@ class ColumnSelector {
   int[] getCols() {
     int[] out = new int[countOn()+1];
     int c = 0;
-    for(int i=0;i<buttons.length;i++){// the first column Always has to be the geom
+    for(int i=0;i<buttons.length && i <=10;i++){// the first column Always has to be the geom
       if(buttons[i].name.equals("the_geom")) out[c++] = i;
     }
     for (int i=0; i<buttons.length; i++) {
@@ -159,7 +159,7 @@ class SubmitButton {
     fill(255, 0, 255);
     rect(c, r, w, h, 5);
     fill(0);
-    text("SUBMIT", c+3, r+h/2);
+    text("SUBMIT", c+75, r+h/2);
   }
   boolean mousePressed() {
     if (mouseX > c && mouseX < c+h &&
