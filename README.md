@@ -16,7 +16,7 @@ displaying a map with datapoints!
 - Kiran: Realized a problem in earlier interpretation of base file formatting; rewrote majority of parsing code to correct errors, mirror the complete structure of multipolygons, and updated storage to use doubles rather than floats.
 
 ### Wednesday, May 22
-- Emory: Finished zoom buttons; also made a button that will reset the zoom of the map;
+- Emory: Finished zoom buttons they zoom in and out based on the upper left hand corner; also made a button that will reset the zoom of the map;
 - Kiran: Fleshed out CSVFile class to parse data and extract the proper information for datapoints
 
 ### Thursday, May 23
@@ -31,7 +31,10 @@ displaying a map with datapoints!
 - Kiran: Corrected issues in Emory's drag; Wrote code to determine which region any given point falls in; wrote code to calculate the density of points for any particular neighborhood and then displayed it through a grayscale heatmap; created ability to shift between 'point' mode and 'density' mode by holding down up key
 
 ### Sunday, May 26
-- Emory: Created a label explaining how to access the density map;
+- Emory: Created a label explaining how to access the density map in the top left corner of the interface;
 
 ### Monday, May 27
 - Emory: Created a scale reference for the density map showing what each color means; changed how far one can zoom in on the map;
+
+### Tuesday, May 28
+- Emory : Starting to work with the popups for each point; trying to figure out how to click on each individual point
