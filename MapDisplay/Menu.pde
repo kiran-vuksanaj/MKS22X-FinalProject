@@ -28,7 +28,9 @@ class Menu{
     return null;
   }
   void enterColumnStep(){
-    cols = new ColumnSelector(100,480);
+    data = new CSVFile(filename.textInput());
+    cols = new ColumnSelector(100,480,data.getHeaders());
+    step = 1;
   }
 }
 class TextBox{
@@ -50,7 +52,9 @@ class TextBox{
   }
 }
 class ColumnSelector{
-  ColumnSelector(float r,float c){
+  float r,c;
+  String[] options;
+  ColumnSelector(float r,float c,String[] options){
     
   }
   void draw(){
