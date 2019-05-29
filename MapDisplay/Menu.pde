@@ -63,7 +63,9 @@ class ColumnSelector{
     }
   }
   void draw(){
-    
+    for(Button b : buttons){
+      b.draw();
+    }
   }
   private class Button{
     float r,c;
@@ -76,7 +78,9 @@ class ColumnSelector{
       chosen = false;
     }
     void draw(){
-      
+      fill(255);
+      rect(r,c,80,20,5);
+      text(name,r+4,c);
     }
   }
 }
