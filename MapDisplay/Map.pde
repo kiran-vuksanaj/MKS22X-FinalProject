@@ -30,9 +30,7 @@ class Map {
 
   void draw(int mode) {
     pushMatrix();
-
-    scale(scale, -scale);
-    translate(-upperLeftX, -upperLeftY);
+    moveToCoords();
     fill(0, 0, 0);
     if(mode==1){
       for (Neighborhood n : regions) {
@@ -63,6 +61,10 @@ class Map {
 
   Neighborhood[] regions() {
     return regions;
+  }
+  void moveToCoords(){
+    scale(scale, -scale);
+    translate(-upperLeftX, -upperLeftY);
   }
 
   void reset() {
