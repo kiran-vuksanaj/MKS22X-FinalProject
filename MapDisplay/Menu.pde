@@ -88,9 +88,26 @@ class ColumnSelector {
     if (mouseX > c && mouseX < c+80 && 
       mouseY > r && mouseY < r+(20*buttons.length)) {
       int idx = (int)((mouseY - r)/20);
-      buttons[idx].chosen = !buttons[idx].chosen;
+      buttons[idx].toggle();
     }
     return false;
+  }
+  private int countOn(){
+    int out = 0;
+    for(Button b : buttons){
+      if(b.chosen) out++;
+    }
+    return out;
+  }
+  int[] getCols(){
+    int[] out = new int[countOn()];
+    int c = 0;
+    for(int i=0;i<buttons.length;i++){
+      if(buttons[i].chosen){
+        out[c++] = i;
+      }
+    }
+    return out;
   }
   private class Button {
     float r, c;
@@ -111,6 +128,9 @@ class ColumnSelector {
       rect(c, r, 80, 20, 5);
       fill(0);
       text(name, c+2, r+16);
+    }
+    void toggle(){
+      chosen = !chosen;
     }
   }
 }
