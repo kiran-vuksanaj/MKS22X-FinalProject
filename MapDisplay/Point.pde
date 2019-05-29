@@ -7,6 +7,7 @@ class Point{
   Point(double[] coords,String otherData){
     longitude = coords[0];
     latitude = coords[1];
+    extraData = new Popup(this,"",otherData);
   }
   
   void draw(int scale){
