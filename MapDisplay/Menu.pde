@@ -109,8 +109,11 @@ class ColumnSelector {
     return out;
   }
   int[] getCols() {
-    int[] out = new int[countOn()];
+    int[] out = new int[countOn()+1];
     int c = 0;
+    for(int i=0;i<buttons.length;i++){// the first column Always has to be the geom
+      if(buttons[i].name.equals("the_geom")) out[c++] = i;
+    }
     for (int i=0; i<buttons.length; i++) {
       if (buttons[i].chosen) {
         out[c++] = i;
