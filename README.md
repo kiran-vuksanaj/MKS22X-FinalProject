@@ -40,3 +40,5 @@ displaying a map with datapoints!
 - Emory : Starting to work with the popups for each point; trying to figure out how to click on each individual point
 - Kiran : (includes a couple of commits past midnight) Designed and then built a menu in order to select an arbitrary file and columns within it for which data to display in popups; accesses file named in text box, allows user to choose relevant columns, upon submit launches the normal map (still needs some design changes)
 
+### Wednesday, May 29
+- Emory: Making changes in the design of Kiran's menu; experimenting still with clicking on each point; I'm having trouble figuring out where each latitude and longitude point are translated to on the window's coordinate map
