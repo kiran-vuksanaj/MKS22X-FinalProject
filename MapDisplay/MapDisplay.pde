@@ -57,7 +57,7 @@ void keyPressed(){
 
 void mousePressed() {
   if(mode != 2){
-    println(mouseX,mouseY);
+    println(m.correctX(mouseX),m.correctY(mouseY));
     if (m.upperLeftY >150 || m.upperLeftY < 550) {
       locked = true;
       currentx = mouseX;

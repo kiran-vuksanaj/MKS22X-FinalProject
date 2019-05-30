@@ -104,6 +104,13 @@ class Map {
     upperLeftX = -74.2834;
     upperLeftY = 40.9408;
   }
+  
+  float correctX(float x){
+    return -1;
+  }
+  float correctY(float y){
+    return -1;
+  }
 
 
 
