@@ -42,3 +42,6 @@ displaying a map with datapoints!
 
 ### Wednesday, May 29
 - Emory: Making changes in the design of Kiran's menu; no longer crashes when you enter the incorrect filename it let's you correct it; experimenting still with clicking on each point (I'm having trouble figuring out where each latitude and longitude point are translated to on the window's) coordinate map
+
+### Thursday, May 30
+- Emory: Made sure that the choices in the menu will not exceed the length of the page; changed certain parts of the menu and added directions; tested map with a new file 
