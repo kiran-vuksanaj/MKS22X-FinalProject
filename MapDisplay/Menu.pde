@@ -35,6 +35,7 @@ class Menu {
       break;
     case 1:
       filename.draw();
+      text("Please select which fields you would like to present. Press submit when you finish.", filename.r, filename.c+20); 
       cols.draw();
       submit.draw();
       break;
