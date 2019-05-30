@@ -93,13 +93,9 @@ class ColumnSelector {
   float r, c;
   Button[] buttons;
   ColumnSelector(float r, float c, String[] options) {
-    print(options.length);
     this.r = r;
     this.c = c;
     
-    for(String str : options){
-      println(str);
-    }
     
     buttons = new Button[options.length ];
     for (int i=0; i<buttons.length; i++) {
@@ -108,7 +104,6 @@ class ColumnSelector {
       }
      else{
         buttons[i] = new Button(r+(20*i), c, options[i]);
-        //print(options[i]);
       }
       
     }
@@ -116,10 +111,7 @@ class ColumnSelector {
   }
   void draw() {
     for (Button b : buttons) {
-      //if(!b.name.equals("the_geom")){
-        //print(b.name);
-        b.draw();
-      //}
+      b.draw();
       
     }
   }
