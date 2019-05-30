@@ -57,15 +57,12 @@ void keyPressed(){
 
 void mousePressed() {
   if(mode != 2){
-    pushMatrix();
-    m.moveToCoords();
     println(mouseX,mouseY);
     if (m.upperLeftY >150 || m.upperLeftY < 550) {
       locked = true;
       currentx = mouseX;
       currenty = mouseY;
     }
-    popMatrix();
   }else{//when menu is active
     menu.mousePressed();
   }
