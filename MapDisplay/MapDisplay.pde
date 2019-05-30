@@ -1,3 +1,5 @@
+import java.io.*;
+
 Map m;
 Menu menu;
 boolean locked = false;
