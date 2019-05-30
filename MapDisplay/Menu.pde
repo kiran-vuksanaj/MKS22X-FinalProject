@@ -5,6 +5,7 @@ class Menu {
   TextBox filename;
   ColumnSelector cols;
   SubmitButton submit;
+  
   Menu(MapDisplay parent) {
     step = 0;
     filename = new TextBox(100, 100);
@@ -80,22 +81,33 @@ class ColumnSelector {
   float r, c;
   Button[] buttons;
   ColumnSelector(float r, float c, String[] options) {
+    print(options.length);
     this.r = r;
     this.c = c;
-    buttons = new Button[options.length-1];
+    
+    for(String str : options){
+      println(str);
+    }
+    
+    buttons = new Button[options.length ];
     for (int i=0; i<buttons.length; i++) {
-      if(!options[i].equals("the_geom")){
+      if(options[i].equals("the_geom")){
+        buttons[i] = new Button(r+(20*i), c, "DATA");
+      }
+     else{
         buttons[i] = new Button(r+(20*i), c, options[i]);
+        //print(options[i]);
       }
       
     }
+
   }
   void draw() {
     for (Button b : buttons) {
-      if(!b.name.equals("the_geom")){
-        print(b.name);
+      //if(!b.name.equals("the_geom")){
+        //print(b.name);
         b.draw();
-      }
+      //}
       
     }
   }
@@ -118,7 +130,7 @@ class ColumnSelector {
     int[] out = new int[countOn()+1];
     int c = 0;
     for(int i=0;i<buttons.length && i <=10;i++){// the first column Always has to be the geom
-      if(buttons[i].name.equals("the_geom")) out[c++] = i;
+      if(buttons[i].name.equals("DATA")) out[c++] = i;
     }
     for (int i=0; i<buttons.length; i++) {
       if (buttons[i].chosen) {
