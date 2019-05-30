@@ -106,10 +106,12 @@ class Map {
   }
   
   float correctX(float x){
-    return -1;
+    x /= scale;
+    return x + upperLeftX;
   }
   float correctY(float y){
-    return -1;
+    y /= scale;
+    return y + upperLeftY;
   }
 
 
