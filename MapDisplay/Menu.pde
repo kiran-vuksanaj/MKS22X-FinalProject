@@ -36,6 +36,7 @@ class Menu {
     case 1:
       filename.draw();
       text("Please select which fields you would like to present. Press submit when you finish.", filename.r, filename.c+20); 
+      text("After you press submit the map may take a few seconds to load.", filename.r, filename.c+ 40);
       cols.draw();
       submit.draw();
       break;
@@ -82,6 +83,7 @@ class TextBox {
   }
   void draw() {
     text("filename (click enter when complete): "+input, r, c);
+    
     if(error){
       text("File not found. Please enter the name of the file you wish to open.", r, c+100);
     }
@@ -111,8 +113,8 @@ class ColumnSelector {
 
   }
   void draw() {
-    for (Button b : buttons) {
-      b.draw();
+    for (int i = 0; i < buttons.length && i < 20; i++) {
+      buttons[i].draw();
       
     }
   }
