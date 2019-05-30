@@ -14,10 +14,16 @@ class Menu {
   void keyPressed() {
     if (step==0) {//keystrokes only do something if on step 0
       if (key==ENTER||key==RETURN) {
-        enterColumnStep();
+        try{
+          enterColumnStep();
+        }catch(Exception e) {
+          filename.error = true;
+        }
       } else if (key==BACKSPACE) {
+        filename.error = false;
         filename.backspace();
       } else if (key!=CODED) {
+        filename.error = false;
         filename.add(key);
       }
     }
@@ -37,7 +43,7 @@ class Menu {
   DataFile getDataFile() {
     return data;
   }
-  void enterColumnStep() {
+  void enterColumnStep() throws Exception{
     data = new CSVFile(filename.textInput());
     cols = new ColumnSelector(150, 200, data.getHeaders());
     submit = new SubmitButton(150, 480, 100, 200, this);
@@ -59,9 +65,12 @@ class Menu {
 class TextBox {
   float r, c;
   String input;
+  boolean error;
+  
   TextBox(float r, float c) {
     this.r = r;
     this.c = c;
+    error = false;
     input = "inputFiles/";
   }
   void add(char c) {
@@ -72,6 +81,9 @@ class TextBox {
   }
   void draw() {
     text("filename (click enter when complete): "+input, r, c);
+    if(error){
+      text("File not found. Please enter the name of the file you wish to open.", r, c+100);
+    }
   }
   String textInput() {
     return input;
@@ -96,6 +108,7 @@ class ColumnSelector {
       }
      else{
         buttons[i] = new Button(r+(20*i), c, options[i]);
+        //print(options[i]);
       }
       
     }
@@ -103,8 +116,11 @@ class ColumnSelector {
   }
   void draw() {
     for (Button b : buttons) {
+      //if(!b.name.equals("the_geom")){
+        //print(b.name);
         b.draw();
-      }
+      //}
+      
     }
   }
   boolean mousePressed() {
@@ -179,6 +195,9 @@ class SubmitButton {
   boolean mousePressed() {
     if (mouseX > c && mouseX < c+h &&
       mouseY > r && mouseY < r+h) {
+      textSize(50);
+      fill(0);
+      text("LOADING", 400, 500);
       parent.exitMenu();
       return true;
     }
