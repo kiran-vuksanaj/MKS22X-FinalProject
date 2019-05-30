@@ -1,3 +1,5 @@
+import java.io.*;
+
 Map m;
 Menu menu;
 boolean locked = false;
@@ -36,35 +38,7 @@ void draw() {
   background(50, 140, 200);
   if(mode != 2){
     m.draw(mode);
-    fill(212, 227, 179);
-    rect(15, 15, 265, 50);
-    fill(0);
-    textSize(20);
-    if(mode == 0){
-      text("To view density map,", 26, 35);
-      text("press the arrow up button.", 28, 53);
-    }
-
-
-    if(mode == 1){
-      text("To view point map,", 26, 35);
-      text("release the arrow up button.", 28, 53);
-      fill(255);
-      rect(630, 600, 40, 40);
-      fill(209);
-      rect(670, 600, 40, 40);
-      fill(167);
-      rect(710, 600, 40, 40);
-      fill(87);
-      rect(750, 600, 40, 40);
-      fill(50);
-      rect(790, 600, 40, 40);
-      fill(0);
-      rect(830, 600, 40, 40);
-      textSize(18);
-      text("least dense", 620, 585);
-      text("most dense", 800, 585);
-    }
+    m.drawOverlay(mode);
   }else{
     menu.draw();
   }

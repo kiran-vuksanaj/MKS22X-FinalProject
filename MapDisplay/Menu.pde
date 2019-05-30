@@ -5,6 +5,7 @@ class Menu {
   TextBox filename;
   ColumnSelector cols;
   SubmitButton submit;
+  
   Menu(MapDisplay parent) {
     step = 0;
     filename = new TextBox(100, 100);
@@ -13,10 +14,16 @@ class Menu {
   void keyPressed() {
     if (step==0) {//keystrokes only do something if on step 0
       if (key==ENTER||key==RETURN) {
-        enterColumnStep();
+        try{
+          enterColumnStep();
+        }catch(Exception e) {
+          filename.error = true;
+        }
       } else if (key==BACKSPACE) {
+        filename.error = false;
         filename.backspace();
       } else if (key!=CODED) {
+        filename.error = false;
         filename.add(key);
       }
     }
@@ -36,10 +43,10 @@ class Menu {
   DataFile getDataFile() {
     return data;
   }
-  void enterColumnStep() {
+  void enterColumnStep() throws Exception{
     data = new CSVFile(filename.textInput());
-    cols = new ColumnSelector(100, 480, data.getHeaders());
-    submit = new SubmitButton(400, 480, 100, 200, this);
+    cols = new ColumnSelector(150, 200, data.getHeaders());
+    submit = new SubmitButton(150, 480, 100, 200, this);
     step = 1;
   }
   void exitMenu() {
@@ -58,9 +65,12 @@ class Menu {
 class TextBox {
   float r, c;
   String input;
+  boolean error;
+  
   TextBox(float r, float c) {
     this.r = r;
     this.c = c;
+    error = false;
     input = "inputFiles/";
   }
   void add(char c) {
@@ -71,6 +81,9 @@ class TextBox {
   }
   void draw() {
     text("filename (click enter when complete): "+input, r, c);
+    if(error){
+      text("File not found. Please enter the name of the file you wish to open.", r, c+100);
+    }
   }
   String textInput() {
     return input;
@@ -82,14 +95,24 @@ class ColumnSelector {
   ColumnSelector(float r, float c, String[] options) {
     this.r = r;
     this.c = c;
-    buttons = new Button[options.length];
+    
+    
+    buttons = new Button[options.length ];
     for (int i=0; i<buttons.length; i++) {
-      buttons[i] = new Button(r+(20*i), c, options[i]);
+      if(options[i].equals("the_geom")){
+        buttons[i] = new Button(r+(20*i), c, "DATA");
+      }
+     else{
+        buttons[i] = new Button(r+(20*i), c, options[i]);
+      }
+      
     }
+
   }
   void draw() {
     for (Button b : buttons) {
       b.draw();
+      
     }
   }
   boolean mousePressed() {
@@ -110,8 +133,8 @@ class ColumnSelector {
   int[] getCols() {
     int[] out = new int[countOn()+1];
     int c = 0;
-    for(int i=0;i<buttons.length;i++){// the first column Always has to be the geom
-      if(buttons[i].name.equals("the_geom")) out[c++] = i;
+    for(int i=0;i<buttons.length && i <=10;i++){// the first column Always has to be the geom
+      if(buttons[i].name.equals("DATA")) out[c++] = i;
     }
     for (int i=0; i<buttons.length; i++) {
       if (buttons[i].chosen) {
@@ -159,11 +182,14 @@ class SubmitButton {
     fill(255, 0, 255);
     rect(c, r, w, h, 5);
     fill(0);
-    text("SUBMIT", c+3, r+h/2);
+    text("SUBMIT", c+75, r+h/2);
   }
   boolean mousePressed() {
     if (mouseX > c && mouseX < c+h &&
       mouseY > r && mouseY < r+h) {
+      textSize(50);
+      fill(0);
+      text("LOADING", 400, 500);
       parent.exitMenu();
       return true;
     }
