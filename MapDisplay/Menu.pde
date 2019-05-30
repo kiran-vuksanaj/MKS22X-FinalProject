@@ -96,6 +96,7 @@ class ColumnSelector {
       }
      else{
         buttons[i] = new Button(r+(20*i), c, options[i]);
+        //print(options[i]);
       }
       
     }
@@ -103,8 +104,11 @@ class ColumnSelector {
   }
   void draw() {
     for (Button b : buttons) {
+      //if(!b.name.equals("the_geom")){
+        //print(b.name);
         b.draw();
-      }
+      //}
+      
     }
   }
   boolean mousePressed() {
