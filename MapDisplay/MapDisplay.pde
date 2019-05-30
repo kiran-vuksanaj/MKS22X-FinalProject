@@ -57,7 +57,9 @@ void keyPressed(){
 
 void mousePressed() {
   if(mode != 2){
-    println(m.correctX(mouseX),m.correctY(mouseY));
+    float latitude = m.correctY(mouseY);
+    float longitude = m.correctX(mouseX);
+    m.mousePressed();
     if (m.upperLeftY >150 || m.upperLeftY < 550) {
       locked = true;
       currentx = mouseX;

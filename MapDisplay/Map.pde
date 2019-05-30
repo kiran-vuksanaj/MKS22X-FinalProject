@@ -79,10 +79,9 @@ class Map {
       text("most dense", 800, 585);
     }
   }
-  void drawPointOverlay(){
+  void mousePressed(){
     
   }
-
   void setScale(int newScale) {
     scale = newScale;
   }
