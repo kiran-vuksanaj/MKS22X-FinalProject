@@ -111,7 +111,7 @@ class Map {
     return x + upperLeftX;
   }
   float correctY(float y){
-    y /= scale;
+    y /= -scale;
     return y + upperLeftY;
   }
 
