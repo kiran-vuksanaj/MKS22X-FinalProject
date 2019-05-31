@@ -5,6 +5,7 @@ class Map {
   DataFile data;
   int scale;
   float maxDensity;
+  Point lastClicked;
 
   Map(DataFile source, String bgFilename) {
     regions = getBGData(bgFilename);
@@ -80,6 +81,9 @@ class Map {
     }
   }
   void mousePressed(float longitude, float latitude){
+    /*if(lastClicked != null && !lastClicked.clickedHere(longitude, latitude)){
+      lastClicked.showPopup = false;
+    }*/
     for(Point p : data.points()){
       p.clickedHere(longitude, latitude);
     }

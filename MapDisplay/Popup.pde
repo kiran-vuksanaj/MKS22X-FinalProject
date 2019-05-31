@@ -14,6 +14,6 @@ class Popup{
   }
   void draw(){
     fill(170);
-    rect(100, 100, 200, 100);
+    rect((float)parentPoint.longitude, (float)parentPoint.latitude, 200, 100);
   }
 }

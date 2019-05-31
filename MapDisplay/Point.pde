@@ -15,7 +15,7 @@ class Point{
     fill(0,255,207);
     strokeWeight(.1/scale);
     ellipse((float)(longitude),(float)(latitude),10.0/scale,10.0/scale);
-    //popup();
+    popup();
   }
   
   void popup(){
