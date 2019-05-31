@@ -15,7 +15,7 @@ class Point{
     fill(0,255,207);
     strokeWeight(.1/scale);
     ellipse((float)(longitude),(float)(latitude),10.0/scale,10.0/scale);
-    popup();
+    //popup();
   }
   
   void popup(){
@@ -33,6 +33,8 @@ class Point{
     lati < latitude + .001 && lati > longitude - .001){
       showPopup = true;
       print("point ");
+      popup();
+      showPopup = false;
       return true;
     }
     else{
