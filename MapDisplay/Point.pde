@@ -21,20 +21,20 @@ class Point{
   void popup(){
     if(showPopup){
       print("true " + this);
-      fill(255);
-      ellipse(100, 100, 100, 100);
+      extraData = new Popup(this, info, info);
+      extraData.draw();
     }
   }
 
   boolean clickedHere(float lati, float longi){
-    println("Longitude: " + longitude + "    Longi: " + longi);
-    println("Latitude: " + latitude + "    Lati: " + lati);
-    if(longi < longitude + .001 && longi > longitude - .001 && 
-    lati < latitude + .001 && lati > longitude - .001){
+    //println("Longitude: " + longitude + "    Longi: " + longi);
+    //println("Latitude: " + latitude + "    Lati: " + lati);
+    if(longi < longitude + .002 && longi > longitude - .002 && 
+    lati < latitude + .002 && lati > longitude - .002){
       showPopup = true;
       print("point ");
       popup();
-      showPopup = false;
+      //showPopup = false;
       return true;
     }
     else{
