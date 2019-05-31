@@ -59,7 +59,7 @@ void mousePressed() {
   if(mode != 2){
     float latitude = m.correctY(mouseY);
     float longitude = m.correctX(mouseX);
-    m.mousePressed();
+    m.mousePressed(latitude, longitude);
     if (m.upperLeftY >150 || m.upperLeftY < 550) {
       locked = true;
       currentx = mouseX;

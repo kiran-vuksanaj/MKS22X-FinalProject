@@ -15,6 +15,15 @@ class Neighborhood{
     internalPoints = new ArrayList<Point>();
   }
   
+  void mousePressed(float longitude, float latitude){
+    println(name);
+    for(Point p : internalPoints){
+      if(p.clickedHere(longitude, latitude)){
+        break;
+      }
+    }
+  }
+  
   float getArea(){
     return area;
   }

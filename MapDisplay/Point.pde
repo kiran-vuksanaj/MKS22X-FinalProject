@@ -15,14 +15,22 @@ class Point{
     fill(0,255,207);
     strokeWeight(.1/scale);
     ellipse((float)(longitude),(float)(latitude),10.0/scale,10.0/scale);
-    if(mousePressed && clickedHere()){
-      print("here ");
+    popup();
+  }
+  
+  void popup(){
+    if(showPopup){
+      print("true " + this);
+      fill(255);
+      ellipse(100, 100, 100, 100);
     }
   }
 
-  boolean clickedHere(){
-    //print(longitude + "," + latitude);
-    if(mouseX == longitude && mouseY == latitude){
+  boolean clickedHere(float lati, float longi){
+    println("Longitude: " + longitude + "    Longi: " + longi);
+    println("Latitude: " + latitude + "    Lati: " + lati);
+    if(longi < longitude + .001 && longi > longitude - .001 && 
+    lati < latitude + .001 && lati > longitude - .001){
       showPopup = true;
       print("point ");
       return true;

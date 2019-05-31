@@ -79,8 +79,10 @@ class Map {
       text("most dense", 800, 585);
     }
   }
-  void mousePressed(){
-    
+  void mousePressed(float longitude, float latitude){
+    for(Neighborhood n : regions){
+      n.mousePressed(longitude, latitude);
+    }
   }
   void setScale(int newScale) {
     scale = newScale;
