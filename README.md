@@ -45,3 +45,4 @@ displaying a map with datapoints!
 
 ### Thursday, May 30
 - Emory: Made sure that the choices in the menu will not exceed the length of the page; changed certain parts of the menu and added directions; tested map with a new file; we can now click on a point and a rectangle shows up
+- Kiran: Researched the way mouseX and mouseY work, in order to be able to correct them to the right location, building a correctX() and correctY() method for use in popups.
