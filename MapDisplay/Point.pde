@@ -29,10 +29,10 @@ class Point{
   boolean clickedHere(float lati, float longi){
     //println("Longitude: " + longitude + "    Longi: " + longi);
     //println("Latitude: " + latitude + "    Lati: " + lati);
-    if(longi < longitude + .0015 && longi > longitude - .0015 && 
-    lati < latitude + .0015 && lati > longitude - .0015){
+    if((longi < longitude + .0015 && longi > longitude - .0015) 
+      && (lati < latitude + .0015 && lati > latitude - .0015)){
       showPopup = true;
-      print("point ");
+      print(parentNeighborhood);
       popup();
       //showPopup = false;
       return true;
