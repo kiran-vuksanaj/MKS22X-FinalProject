@@ -132,6 +132,7 @@ private static String[][] getTable(ArrayList<String> lines, int... cols) {
     cols = new int[tableWidth];
     for (int i=0; i<cols.length; i++) cols[i]=i;
   }
+ // printArray(cols);
   String[][] out = new String[lines.size()][];
   for (int i = 0; i<out.length; i++) {
     out[i] = new String[cols.length];
