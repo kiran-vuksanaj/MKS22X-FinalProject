@@ -159,9 +159,9 @@ class ColumnSelector {
       } else {
         fill(255);
       }
-      rect(c, r, 80, 20, 5);
+      rect(c, r, 100, 20, 5);
       fill(0);
-      text(name, c+2, r+16);
+      text(name.toUpperCase(), c+2, r+16);
     }
     void toggle() {
       chosen = !chosen;

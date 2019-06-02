@@ -10,10 +10,11 @@ class Popup{
   }
   
   String getInfo(){
+    print();
     return ""; //temporary
   }
   void draw(){
     fill(170);
-    rect((float)parentPoint.longitude, (float)parentPoint.latitude, 200, 100);
+    rect((float)parentPoint.longitude, (float)parentPoint.latitude, .18, .12);
   }
 }

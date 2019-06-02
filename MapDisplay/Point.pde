@@ -20,7 +20,7 @@ class Point{
   
   void popup(){
     if(showPopup){
-      print("true " + this);
+      //print("true " + this);
       extraData = new Popup(this, info, info);
       extraData.draw();
     }
