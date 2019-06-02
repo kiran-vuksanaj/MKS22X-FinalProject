@@ -49,3 +49,4 @@ displaying a map with datapoints!
 
 ### Friday, May 31
 - Kiran: tried to figure out how geoJSON formats work (no commits during class);
+- Emory: Played around with the format of our popups; figured out how to get it to stay on the screen until another area is pressed;
