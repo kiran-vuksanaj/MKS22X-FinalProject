@@ -48,5 +48,8 @@ displaying a map with datapoints!
 - Kiran: Researched the way mouseX and mouseY work, in order to be able to correct them to the right location, building a correctX() and correctY() method for use in popups.
 
 ### Friday, May 31
-- Kiran: tried to figure out how geoJSON formats work (no commits during class);
+- Kiran: Tried to figure out how geoJSON formats work (no commits during class);
 - Emory: Played around with the format of our popups; figured out how to get it to stay on the screen until another area is pressed;
+
+### Sunday, June 2
+- Emory: Fixed a bug in the popups, where multiple were popping up on points that were not clicked; experimented with putting the point data in the popups but having trouble figuring out where to store that;
