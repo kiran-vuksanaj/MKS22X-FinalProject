@@ -6,7 +6,7 @@ displaying a map with datapoints!
 
 ## Directions
 ### To Use the Map:
-1. First, you need to import a data set into the folder labeled 'inputFiles'. Some sample datasets are listed below, and there is also one already in inFiles, called 'Subway_Entrances_Sample.csv'.
+1. First, you need to download a data set as a CSV file and put it into the folder labeled 'inputFiles'. Some sample datasets are listed below, and there is also one already in inFiles, called 'Subway_Entrances_Sample.csv'.
 2. Run the program and type the name of the file you wish to display. Press enter once finished typing.
 3. A menu will show up, which has all of the different data fields you can present when you view a specific point on the map. Click on whichever fields you wish to display.
 4. Press 'SUBMIT' when you've chosen the desired fields. A map of New York City will show up.
@@ -16,6 +16,11 @@ displaying a map with datapoints!
 - Reset the zoom and view by clicking the circle button in the lower left hand corner of the screen.
 6. To switch between Point View and Density View, press the up arrow key.
 
+### Sample Data Sets
+- https://data.cityofnewyork.us/Transportation/Parking-Meters-GPS-Coordinates-and-Status/5jsj-cq4s which shows all of the parking meters in NYC.
+- https://data.cityofnewyork.us/Recreation/New-York-City-Art-Galleries/tgyc-r5jh which shows all of the art galleries in NYC.
+- https://data.cityofnewyork.us/Social-Services/After-School-Programs/6ej9-7qyi which is a map of all of the places in NYC that provide after school programs.
+- https://data.cityofnewyork.us/resource/2hzz-95k8.json which is a map or all of the theaters in NYC.
 
 
 
