@@ -58,7 +58,7 @@ class Menu {
   }
   boolean mousePressed() {
     if (step==1) {
-      return cols.mousePressed() || submit.mousePressed(); //using short circuiting here
+      return cols.mousePressed() || submit.mouseClicked(); //using short circuiting here
     }
     return false;
   }
@@ -162,9 +162,9 @@ class ColumnSelector {
       } else {
         fill(255);
       }
-      rect(c, r, 80, 20, 5);
+      rect(c, r, 100, 20, 5);
       fill(0);
-      text(name, c+2, r+16);
+      text(name.toUpperCase(), c+2, r+16);
     }
     void toggle() {
       chosen = !chosen;
@@ -187,7 +187,7 @@ class SubmitButton {
     fill(0);
     text("SUBMIT", c+75, r+h/2);
   }
-  boolean mousePressed() {
+  boolean mouseClicked() {
     if (mouseX > c && mouseX < c+h &&
       mouseY > r && mouseY < r+h) {
       textSize(50);

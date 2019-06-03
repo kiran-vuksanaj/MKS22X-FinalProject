@@ -5,6 +5,7 @@ class Map {
   DataFile data;
   int scale;
   float maxDensity;
+  Point lastClicked;
 
   Map(DataFile source, String bgFilename) {
     regions = getBGData(bgFilename);
@@ -30,9 +31,7 @@ class Map {
 
   void draw(int mode) {
     pushMatrix();
-
-    scale(scale, -scale);
-    translate(-upperLeftX, -upperLeftY);
+    moveToCoords();
     fill(0, 0, 0);
     if(mode==1){
       for (Neighborhood n : regions) {
@@ -52,7 +51,48 @@ class Map {
 
 
   }
-
+  void drawOverlay(int mode){
+    fill(212, 227, 179);
+    rect(15, 15, 265, 50);
+    fill(0);
+    textSize(20);
+    if(mode==0){
+      text("To view density map,", 26, 35);
+      text("press the arrow up button.", 28, 53);
+    }
+    if(mode==1){
+      text("To view point map,", 26, 35);
+      text("release the arrow up button.", 28, 53);
+      fill(255);
+      rect(630, 600, 40, 40);
+      fill(209);
+      rect(670, 600, 40, 40);
+      fill(167);
+      rect(710, 600, 40, 40);
+      fill(87);
+      rect(750, 600, 40, 40);
+      fill(50);
+      rect(790, 600, 40, 40);
+      fill(0);
+      rect(830, 600, 40, 40);
+      textSize(18);
+      text("least dense", 620, 585);
+      text("most dense", 800, 585);
+    }
+  }
+  void mousePressed(float longitude, float latitude){
+    /*if(lastClicked != null && !lastClicked.clickedHere(longitude, latitude)){
+      lastClicked.showPopup = false;
+    }*/
+    for(Point p : data.points()){
+      p.clickedHere(longitude, latitude);
+    }
+    /*
+    for(Neighborhood n : regions){
+      n.mousePressed(longitude, latitude);
+    }
+    */
+  }
   void setScale(int newScale) {
     scale = newScale;
   }
@@ -64,11 +104,24 @@ class Map {
   Neighborhood[] regions() {
     return regions;
   }
+  void moveToCoords(){
+    scale(scale, -scale);
+    translate(-upperLeftX, -upperLeftY);
+  }
 
   void reset() {
     scale = 1400;
     upperLeftX = -74.2834;
     upperLeftY = 40.9408;
+  }
+  
+  float correctX(float x){
+    x /= scale;
+    return x + upperLeftX;
+  }
+  float correctY(float y){
+    y /= -scale;
+    return y + upperLeftY;
   }
 
 
