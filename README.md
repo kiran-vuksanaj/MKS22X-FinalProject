@@ -1,6 +1,23 @@
 # MKS22X-FinalProject
 displaying a map with datapoints!
 
+## Project Description
+
+
+## Directions
+### To Use the Map:
+1. First, you need to import a data set into the folder labeled 'inputFiles'. Some sample datasets are listed below, and there is also one already in inFiles, called 'Subway_Entrances_Sample.csv'.
+2. Run the program and type the name of the file you wish to display. Press enter once finished typing.
+3. A menu will show up, which has all of the different data fields you can present when you view a specific point on the map. Click on whichever fields you wish to display.
+4. Press 'SUBMIT' when you've chosen the desired fields. A map of New York City will show up.
+5. With our map, you can move around and zoom using a few different methods.
+- Zoom in and out by clicking the '+' and '-' buttons on the lower left hand corner of the screen.
+- View different parts of the map by clicking and dragging your mouse on the window.
+- Reset the zoom and view by clicking the circle button in the lower left hand corner of the screen.
+6. To switch between Point View and Density View, press the up arrow key.
+
+
+
 
 ## Daily Logs
 ### Sunday, May 19
