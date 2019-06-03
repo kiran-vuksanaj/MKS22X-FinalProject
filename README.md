@@ -75,3 +75,6 @@ displaying a map with datapoints!
 
 ### Sunday, June 2
 - Emory: Fixed a bug in the popups, where multiple were popping up on points that were not clicked; experimented with putting the point data in the popups but having trouble figuring out where to store that;
+
+### Monday, June 3
+- Emory: Tried to find a way to make the popups resize according to the scale but didn't find a good solution; still trying to figure out how to display the point data into the popups;
