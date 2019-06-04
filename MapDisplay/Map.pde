@@ -52,6 +52,8 @@ class Map {
 
   }
   void drawOverlay(int mode){
+    fill(0);
+    //text();
     fill(212, 227, 179);
     rect(15, 15, 265, 50);
     fill(0);
