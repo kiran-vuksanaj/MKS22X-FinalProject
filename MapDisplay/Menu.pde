@@ -1,4 +1,5 @@
 class Menu {
+  String fName = "";
   int step;
   MapDisplay external;
   CSVFile data;
@@ -15,14 +16,17 @@ class Menu {
     if (step==0) {//keystrokes only do something if on step 0
       if (key==ENTER||key==RETURN) {
         try{
+          print(fName);
           enterColumnStep();
         }catch(Exception e) {
           filename.error = true;
         }
       } else if (key==BACKSPACE) {
         filename.error = false;
+        fName = fName.substring(0, fName.length()-1);
         filename.backspace();
       } else if (key!=CODED) {
+        fName += key;
         filename.error = false;
         filename.add(key);
       }
@@ -46,7 +50,8 @@ class Menu {
     return data;
   }
   void enterColumnStep() throws Exception{
-    data = new CSVFile(filename.textInput());
+    external.fileName = fName;
+    data = new CSVFile(filename.textInput(), external.m);
     cols = new ColumnSelector(150, 200, data.getHeaders());
     submit = new SubmitButton(150, 480, 100, 200, this);
     step = 1;

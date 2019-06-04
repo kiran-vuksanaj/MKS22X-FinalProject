@@ -20,47 +20,52 @@ class Map {
 
     zoomControl = new ZoomButton(this, 50, 100, 550, 650);
   }
-  void getMaxDensity(){
+  void getMaxDensity() {
     float maxDensity = 0;
-    for(Neighborhood n : regions()){
-      maxDensity = max(maxDensity,n.getDensity());
+    for (Neighborhood n : regions()) {
+      maxDensity = max(maxDensity, n.getDensity());
     }
     this.maxDensity = maxDensity;
   }
-  
+
 
   void draw(int mode) {
     pushMatrix();
     moveToCoords();
     fill(0, 0, 0);
-    if(mode==1){
+    if (mode==1) {
       for (Neighborhood n : regions) {
         n.draw(maxDensity);
       }
-    }
-    else if(mode==0){
-      for(Neighborhood n : regions) {
+    } else if (mode==0) {
+      for (Neighborhood n : regions) {
         n.draw(0);
       }
       for (Point p : data.points()) {
+        //p.popup();
         p.draw(scale);
       }
     }
     popMatrix();
+    if (mode == 0) {
+      for (Point p : data.points()) {
+        p.popup();
+      }
+    }
     zoomControl.draw();
-
-
   }
-  void drawOverlay(int mode){
+  void drawOverlay(int mode) {
+    fill(0);
+    //text();
     fill(212, 227, 179);
     rect(15, 15, 265, 50);
     fill(0);
     textSize(20);
-    if(mode==0){
+    if (mode==0) {
       text("To view density map,", 26, 35);
       text("press the arrow up button.", 28, 53);
     }
-    if(mode==1){
+    if (mode==1) {
       text("To view point map,", 26, 35);
       text("release the arrow up button.", 28, 53);
       fill(255);
@@ -80,18 +85,10 @@ class Map {
       text("most dense", 800, 585);
     }
   }
-  void mousePressed(float longitude, float latitude){
-    /*if(lastClicked != null && !lastClicked.clickedHere(longitude, latitude)){
-      lastClicked.showPopup = false;
-    }*/
-    for(Point p : data.points()){
+  void mousePressed(float longitude, float latitude) {
+    for (Point p : data.points()) {
       p.clickedHere(longitude, latitude);
     }
-    /*
-    for(Neighborhood n : regions){
-      n.mousePressed(longitude, latitude);
-    }
-    */
   }
   void setScale(int newScale) {
     scale = newScale;
@@ -104,7 +101,7 @@ class Map {
   Neighborhood[] regions() {
     return regions;
   }
-  void moveToCoords(){
+  void moveToCoords() {
     scale(scale, -scale);
     translate(-upperLeftX, -upperLeftY);
   }
@@ -114,12 +111,12 @@ class Map {
     upperLeftX = -74.2834;
     upperLeftY = 40.9408;
   }
-  
-  float correctX(float x){
+
+  float correctX(float x) {
     x /= scale;
     return x + upperLeftX;
   }
-  float correctY(float y){
+  float correctY(float y) {
     y /= -scale;
     return y + upperLeftY;
   }

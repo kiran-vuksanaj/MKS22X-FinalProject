@@ -4,24 +4,27 @@ class Point{
   Neighborhood parentNeighborhood;
   String info;
   boolean showPopup;
+  Map map;
 
-  Point(double[] coords,String otherData){
+  Point(Map external, double[] coords,String otherData){
+    map = external;
     longitude = coords[0];
     latitude = coords[1];
-    extraData = new Popup(this,"",otherData);
+    extraData = new Popup(this, "", otherData, map);
   }
 
   void draw(int scale){
     fill(0,255,207);
     strokeWeight(.1/scale);
     ellipse((float)(longitude),(float)(latitude),10.0/scale,10.0/scale);
-    popup();
+    //popup();
   }
   
   void popup(){
     if(showPopup){
-      //print("true " + this);
-      extraData = new Popup(this, info, info);
+      //print(info);
+      
+      //extraData = new Popup(this, info, info);
       extraData.draw();
     }
   }
@@ -32,7 +35,6 @@ class Point{
     if((longi < longitude + .0015 && longi > longitude - .0015) 
       && (lati < latitude + .0015 && lati > latitude - .0015)){
       showPopup = true;
-      print(parentNeighborhood);
       popup();
       //showPopup = false;
       return true;
