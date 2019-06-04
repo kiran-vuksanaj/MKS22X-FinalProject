@@ -81,17 +81,9 @@ class Map {
     }
   }
   void mousePressed(float longitude, float latitude){
-    /*if(lastClicked != null && !lastClicked.clickedHere(longitude, latitude)){
-      lastClicked.showPopup = false;
-    }*/
     for(Point p : data.points()){
       p.clickedHere(longitude, latitude);
     }
-    /*
-    for(Neighborhood n : regions){
-      n.mousePressed(longitude, latitude);
-    }
-    */
   }
   void setScale(int newScale) {
     scale = newScale;

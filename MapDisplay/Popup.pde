@@ -3,18 +3,21 @@ class Popup{
   Point parentPoint;
   
   Popup(Point parent,String n,String inf){
-    //println(info);
+    
     parentPoint = parent;
     name = n;
     info = inf;
+    //println(info);
   }
   
   String getInfo(){
-    print();
-    return ""; //temporary
+    return info; //temporary
   }
   void draw(){
     fill(170);
     rect((float)parentPoint.longitude, (float)parentPoint.latitude, .18, .12);
+    fill(0);
+   // println(info, (float)parentPoint.longitude, (float)parentPoint.latitude);
+    text(info, (float)parentPoint.longitude, (float)parentPoint.latitude);//, .18, .12);
   }
 }

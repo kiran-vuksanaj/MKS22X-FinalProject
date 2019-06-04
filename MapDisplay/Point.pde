@@ -8,6 +8,7 @@ class Point{
   Point(double[] coords,String otherData){
     longitude = coords[0];
     latitude = coords[1];
+    print(otherData);
     extraData = new Popup(this,"",otherData);
   }
 
@@ -20,8 +21,9 @@ class Point{
   
   void popup(){
     if(showPopup){
-      //print("true " + this);
-      extraData = new Popup(this, info, info);
+      //print(info);
+      
+      //extraData = new Popup(this, info, info);
       extraData.draw();
     }
   }
@@ -32,7 +34,6 @@ class Point{
     if((longi < longitude + .0015 && longi > longitude - .0015) 
       && (lati < latitude + .0015 && lati > latitude - .0015)){
       showPopup = true;
-      print(parentNeighborhood);
       popup();
       //showPopup = false;
       return true;
