@@ -79,3 +79,6 @@ displaying a map with datapoints!
 
 ### Monday, June 3
 - Emory: Tried to find a way to make the popups resize according to the scale but didn't find a good solution; still trying to figure out how to display the point data into the popups;
+
+### Tuesday, June 4
+- Emory: Had to change the format of the popups so now all popups display in the lower right hand corner of the screen with the chosen data; it's not perfect but it's better than nothing; I also added a title to the map which is basically just the name of the csv file chosen;
