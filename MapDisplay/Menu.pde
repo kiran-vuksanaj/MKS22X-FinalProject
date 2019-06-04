@@ -51,7 +51,7 @@ class Menu {
   }
   void enterColumnStep() throws Exception{
     external.fileName = fName;
-    data = new CSVFile(filename.textInput());
+    data = new CSVFile(filename.textInput(), external.m);
     cols = new ColumnSelector(150, 200, data.getHeaders());
     submit = new SubmitButton(150, 480, 100, 200, this);
     step = 1;

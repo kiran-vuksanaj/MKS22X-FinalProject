@@ -39,6 +39,7 @@ void draw() {
   background(50, 140, 200);
   if(mode != 2){
     m.draw(mode);
+    textSize(40);
     text(fileName, 300, 60);
     m.drawOverlay(mode);
   }else{

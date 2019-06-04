@@ -4,19 +4,20 @@ class Point{
   Neighborhood parentNeighborhood;
   String info;
   boolean showPopup;
+  Map map;
 
-  Point(double[] coords,String otherData){
+  Point(Map external, double[] coords,String otherData){
+    map = external;
     longitude = coords[0];
     latitude = coords[1];
-    print(otherData);
-    extraData = new Popup(this,"",otherData);
+    extraData = new Popup(this, "", otherData, map);
   }
 
   void draw(int scale){
     fill(0,255,207);
     strokeWeight(.1/scale);
     ellipse((float)(longitude),(float)(latitude),10.0/scale,10.0/scale);
-    popup();
+    //popup();
   }
   
   void popup(){
