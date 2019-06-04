@@ -1,6 +1,7 @@
 import java.io.*;
 
 Map m;
+String fileName = "";
 Menu menu;
 boolean locked = false;
 float currentx = 0.0;
@@ -21,7 +22,7 @@ void setupMap(DataFile d) {//assumption that a menu has gotten the data in the d
   for (Point p : d.points()) {
     if (!p.assigntoRegion(m.regions())) nullCounter++;
   }
-  println(float(nullCounter)/d.points().length,"% points unassigned");
+  //println(float(nullCounter)/d.points().length,"% points unassigned");
   m.getMaxDensity();
   //size(461, 570);
 }
@@ -38,6 +39,7 @@ void draw() {
   background(50, 140, 200);
   if(mode != 2){
     m.draw(mode);
+    text(fileName, 300, 60);
     m.drawOverlay(mode);
   }else{
     menu.draw();
