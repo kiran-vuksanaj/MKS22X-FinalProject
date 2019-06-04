@@ -17,6 +17,7 @@ displaying a map with datapoints!
 6. To switch between Point View and Density View, press the up arrow key.
 
 ### Sample Data Sets
+- Any NYC csv dataset that has 'the_geom' as the first column header and the data in that column formatted as 'DATA(<latitude>, <longitude>)' should work in our map
 - https://data.cityofnewyork.us/Transportation/Parking-Meters-GPS-Coordinates-and-Status/5jsj-cq4s which shows all of the parking meters in NYC.
 - https://data.cityofnewyork.us/Recreation/New-York-City-Art-Galleries/tgyc-r5jh which shows all of the art galleries in NYC.
 - https://data.cityofnewyork.us/Social-Services/After-School-Programs/6ej9-7qyi which is a map of all of the places in NYC that provide after school programs.
