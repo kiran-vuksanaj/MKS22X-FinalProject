@@ -2,7 +2,7 @@
 displaying a map with datapoints!
 
 ## Project Description
-
+Our project is a map of New York City showing a dataset of the user's choice. This project is a tool for displaying any set of data points within New York City. Using the formatting commonly found in various datasets on NYC Open Data, a file with a set of points is to be loaded into the program to be displayed on a map of New York City. This data can be displayed as points or as a ‘density’ heatmap across the neighborhoods of New York. Our project is an interactive tool that allows the user to view data that interests them.
 
 ## Directions
 ### To Use the Map:
